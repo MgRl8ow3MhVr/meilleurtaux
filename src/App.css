@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+/* # # # # # # # # # # RESET # # # # # # # # # # # # # # # #   */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Oswald;
+  border: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --orange: #ff9e23;
+  --grey: #d7d5d2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* # # # # # # # # # # GENERAL # # # # # # # # # # # # # # # #   */
+
+h1 {
+  font-size: 35px;
+  font-weight: 800;
+  color: var(--orange);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* # # # # # # # # # # HEADER # # # # # # # # # # # # # # # #   */
+
+header {
+  /* background-color: red; */
+  font-size: 18px;
+}
+
+header > img {
+  width: 300px;
+}
+
+hr {
+  margin-top: 15px;
+  border-top: solid 1px var(--grey);
+}
+
+/* # # # # # # # # # # CHOICE # # # # # # # # # # # # # # # #   */
+
+.choicecontenair {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px 0 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+.choicebox {
+  /* dipslay */
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Style */
+  font-size: 18px;
+  font-weight: 700;
+  border: solid 1px var(--grey);
+  padding: 20px 0 20px 0;
+  margin-right: 5px;
+  box-shadow: 3px 3px 3px 0px rgba(177, 177, 177, 0.56);
+}
+.orange {
+  background-color: var(--orange);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.choicebox:hover {
+  background-color: var(--orange);
+  cursor: pointer;
+}
+
+/* # # # # # # # # # # NAVIGATION # # # # # # # # # # # # # # # #   */
+.navigation {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navigation button {
+  background-color: var(--orange);
+  padding: 0 10px 0 10px;
+  border-radius: 5px;
 }
