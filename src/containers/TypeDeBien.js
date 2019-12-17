@@ -10,6 +10,7 @@ const TypeDeBien = ({ chosen, currentType }) => {
           name="maison"
           chosen={chosen}
           checked={currentType === "maison"}
+          next="/usageDuBien"
         />
         <ChoiceBox
           name="appartement"

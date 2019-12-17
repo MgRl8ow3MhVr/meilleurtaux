@@ -8,6 +8,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Cookies from "js-cookie";
 
@@ -57,6 +58,8 @@ function App() {
   //if doesn't exist then create it empty (first time)
   // if it exists, set the MT state with its content
   useEffect(() => {
+    // const history = useHistory();
+
     const cookie = Cookies.get("meilleurtaux");
     console.log("cookie is", cookie);
     if (!cookie) {
