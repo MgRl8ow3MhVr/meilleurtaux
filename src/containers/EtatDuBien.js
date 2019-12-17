@@ -1,16 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ChoiceBox from "../components/ChoiceBox";
+import Navigation from "../components/Navigation";
+import Info from "../assets/Info";
 
-const EtatDuBien = () => {
+const EtatDuBien = ({ MT, setMT }) => {
+  //Save the current page
+  if (MT.currPage !== "/etatDuBien") {
+    setMT({ ...MT, currPage: "/etatDuBien" });
+  }
+
   return (
-    <>
-      <h1>Etat Du Bien</h1>
+    <div className="page">
+      <h1>ETAT DU BIEN</h1>
+      <Info />
       <div className="choicecontenair">
-        <ChoiceBox name="ANCIEN"></ChoiceBox>
-        <ChoiceBox name="NEUF"></ChoiceBox>
+        <ChoiceBox
+          name="ancien"
+          chosen={() => {
+            setMT({ ...MT, etat: "ancien" });
+          }}
+          checked={MT.etat === "ancien"}
+          next="/usageDuBien"
+        />
+        <ChoiceBox
+          name="neuf"
+          chosen={() => {
+            setMT({ ...MT, etat: "neuf" });
+          }}
+          checked={MT.etat === "neuf"}
+          next="/usageDuBien"
+        />
       </div>
-    </>
+      <Navigation
+        prev="/typeDeBien"
+        next="/usageDuBien"
+        next_allowed={MT.etat ? true : false}
+        percent={30}
+      />
+    </div>
   );
 };
 

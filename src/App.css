@@ -10,15 +10,34 @@
 
 :root {
   --orange: #ff9e23;
+  --orangelight: #ffdfb1;
   --grey: #d7d5d2;
 }
 
 /* # # # # # # # # # # GENERAL # # # # # # # # # # # # # # # #   */
 
+.page {
+  padding: 30px;
+}
+svg {
+  box-shadow: 3px 3px 3px 0px rgba(177, 177, 177, 0.56);
+  border-radius: 30px;
+}
+
 h1 {
   font-size: 35px;
   font-weight: 800;
   color: var(--orange);
+  display: inline;
+  margin-right: 5px;
+}
+
+span {
+  font-size: 0.5rem;
+}
+
+.underlined {
+  text-decoration: underline;
 }
 
 /* # # # # # # # # # # HEADER # # # # # # # # # # # # # # # #   */
@@ -53,15 +72,16 @@ hr {
   align-items: center;
 
   /* Style */
-  font-size: 18px;
+  font-size: 0.7rem;
   font-weight: 700;
   border: solid 1px var(--grey);
   padding: 20px 0 20px 0;
   margin-right: 5px;
   box-shadow: 3px 3px 3px 0px rgba(177, 177, 177, 0.56);
 }
-.orange {
+.selected {
   background-color: var(--orange);
+  color: white;
 }
 
 .choicebox:hover {
@@ -70,13 +90,51 @@ hr {
 }
 
 /* # # # # # # # # # # NAVIGATION # # # # # # # # # # # # # # # #   */
-.navigation {
+
+.navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.navigation button {
+.navbar > div:hover {
+  cursor: pointer;
+}
+
+.suivant {
   background-color: var(--orange);
-  padding: 0 10px 0 10px;
-  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 5px 25px 5px 25px;
+  border-radius: 25px;
+}
+.precedent {
+  text-decoration: underline;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* # # # # # # # # # # PERCENTAGE BAR # # # # # # # # # # # # # # # #   */
+
+.percentagebar {
+  margin: 0 20px 0 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.number {
+  display: flex;
+  font-size: 0.8rem;
+  background-color: var(--orange);
+  color: white;
+  width: 1.8rem;
+  height: 1.8rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.8rem;
+  border: solid 3px var(--orangelight);
+
+  position: absolute;
 }

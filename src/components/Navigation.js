@@ -1,29 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import PercentageBar from "./PercentageBar";
 
-const Navigation = ({ prevNext, setnext }) => {
-  const history = useHistory();
-
+const Navigation = ({ prev, next, next_allowed, percent }) => {
   return (
     <div className="navigation">
-      <button
-        onClick={() => {
-          setnext(-1);
-          history.push(prevNext[0]);
-        }}
-      >
-        PRECEDENT
-      </button>
+      <div className="navbar">
+        <Link to={prev}>
+          <div className="precedent">PRECEDENT</div>
+        </Link>
 
-      <button
-        onClick={() => {
-          setnext(1);
-          history.push(prevNext[1]);
-        }}
-      >
-        SUIVANT
-      </button>
+        <PercentageBar percent={percent} />
+
+        {next_allowed ? (
+          <Link to={next}>
+            <div className="suivant">SUIVANT</div>
+          </Link>
+        ) : (
+          <div
+            className="suivant"
+            onClick={() => {
+              alert("nope");
+            }}
+          >
+            SUIVANT
+          </div>
+        )}
+      </div>
+      <span>*Champ obligatoire - </span>
+      <span className="underlined">mentions légales</span>
     </div>
   );
 };
