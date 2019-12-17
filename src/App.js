@@ -14,6 +14,7 @@ import TypeDeBien from "./containers/A_TypeDeBien";
 import EtatDuBien from "./containers/B_EtatDuBien";
 import UsageDuBien from "./containers/C_UsageDuBien";
 import SituationActuelle from "./containers/D_SituationActuelle";
+import OuSeSitue from "./containers/E_OuSeSitue";
 
 // Import Components
 import Header from "./components/Header";
@@ -68,6 +69,10 @@ const App = () => {
             {/* # # # # # # # 4 SITUATION ACTUELLE # # # # # ## */}
             <Route path="/situationActuelle">
               <SituationActuelle MT={MT} setMT={setMT} />
+            </Route>
+            {/* # # # # # # # 5 OU SE SITUE # # # # # ## */}
+            <Route path="/ouSeSitue">
+              <OuSeSitue MT={MT} setMT={setMT} />
             </Route>
             {/* # # # # # # # DEFAULT ROUTE REDIRECTS TO CURRENT PAGE  # # # # # ## */}
             <Route path="/">

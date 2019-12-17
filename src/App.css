@@ -6,30 +6,28 @@
   border: none;
   color: black;
   text-decoration: none;
+  font-weight: normal;
 }
 
 :root {
   --orange: #ff9e23;
   --orangelight: #ffdfb1;
   --grey: #d7d5d2;
+  --greylight: #f1f1f1;
 }
 
 /* # # # # # # # # # # GENERAL # # # # # # # # # # # # # # # #   */
 
 .page {
-  padding: 30px;
+  padding: 0px 30px 30px 30px;
 }
 svg {
   box-shadow: 3px 3px 3px 0px rgba(177, 177, 177, 0.56);
   border-radius: 30px;
 }
 
-h1 {
-  font-size: 35px;
-  font-weight: 800;
-  color: var(--orange);
-  display: inline;
-  margin-right: 5px;
+h2 {
+  font-size: 0.8rem;
 }
 
 span {
@@ -52,8 +50,20 @@ header > img {
 }
 
 hr {
-  margin-top: 15px;
+  margin: 20px 0 0 0;
   border-top: solid 1px var(--grey);
+}
+
+/* # # # # # # # # # # TITLES # # # # # # # # # # # # # # # #   */
+.title {
+  display: flex;
+  margin: 20px 0 20px 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--orange);
 }
 
 /* # # # # # # # # # # CHOICE # # # # # # # # # # # # # # # #   */
@@ -61,7 +71,7 @@ hr {
 .choicecontenair {
   display: flex;
   justify-content: center;
-  padding: 20px 0 60px 0;
+  padding: 0px 0 0px 0;
 }
 
 .choicebox {
@@ -81,6 +91,7 @@ hr {
   font-weight: 700;
   border: solid 1px var(--grey);
   box-shadow: 2px 2px 2px 0px var(--grey);
+  transition: all 0.2s;
 }
 .selected {
   background-color: var(--orange);
@@ -90,6 +101,7 @@ hr {
 .choicebox:hover {
   background-color: var(--orange);
   cursor: pointer;
+  transform: scale(1.05);
 }
 
 /* # # # # # # # # # # NAVIGATION # # # # # # # # # # # # # # # #   */
@@ -97,6 +109,7 @@ hr {
 .navbar {
   display: flex;
   justify-content: space-between;
+  margin-top: 30px;
 }
 
 .navbar > div:hover {
@@ -139,6 +152,39 @@ hr {
   align-items: center;
   border-radius: 1.8rem;
   border: solid 3px var(--orangelight);
+  transform: translateX(-0.9rem);
 
   position: absolute;
+  transition: all 1s;
+  animation: mymove 0.5s;
+}
+@keyframes mymove {
+  from {
+    transform: translateX(-50px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+/* # # # # # # # # # # FORMS # # # # # # # # # # # # # # # #   */
+
+.inputbar {
+  display: flex;
+  align-items: center;
+  padding: 3px 15px 3px 15px;
+}
+
+.grey {
+  background-color: var(--greylight);
+}
+
+.inputbar input {
+  width: 150px;
+  border: solid 1px var(--orange);
+  border-bottom-width: 2px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding-left: 5px;
+  border-radius: 5px;
 }

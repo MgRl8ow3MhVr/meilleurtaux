@@ -12,8 +12,10 @@ const SituationActuelle = ({ MT, setMT }) => {
 
   return (
     <div className="page">
-      <h1>VOTRE SITUATION ACTUELLE</h1>
-      <Info />
+      <div className="title">
+        <h1>VOTRE SITUATION ACTUELLE</h1>
+        <Info />
+      </div>
       <div className="choicecontenair">
         <ChoiceBox
           name="locataire"
@@ -21,7 +23,7 @@ const SituationActuelle = ({ MT, setMT }) => {
             setMT({ ...MT, situation: "locataire" });
           }}
           checked={MT.situation === "locataire"}
-          next="/situationActuelle"
+          next="/ouSeSitue"
         />
         <ChoiceBox
           name="propriétaire"
@@ -29,7 +31,7 @@ const SituationActuelle = ({ MT, setMT }) => {
             setMT({ ...MT, situation: "proprietaire" });
           }}
           checked={MT.situation === "proprietaire"}
-          next="/situationActuelle"
+          next="/ouSeSitue"
         />
 
         <ChoiceBox
@@ -38,7 +40,7 @@ const SituationActuelle = ({ MT, setMT }) => {
             setMT({ ...MT, situation: "beneficiaire" });
           }}
           checked={MT.situation === "beneficiaire"}
-          next="/situationActuelle"
+          next="/ouSeSitue"
         />
         <ChoiceBox
           name="hébergé à titre gratuit"
@@ -46,12 +48,12 @@ const SituationActuelle = ({ MT, setMT }) => {
             setMT({ ...MT, situation: "heberge" });
           }}
           checked={MT.situation === "heberge"}
-          next="/situationActuelle"
+          next="/ouSeSitue"
         />
       </div>
       <Navigation
         prev="/usageDuBien"
-        next="/situationActuelle"
+        next="/ouSeSitue"
         next_allowed={MT.situation ? true : false}
         percent={45}
       />
