@@ -36,7 +36,7 @@ const TypeDeBien = ({ MT, setMT }) => {
         prev="/typeDeBien"
         next="/etatDuBien"
         next_allowed={MT.type ? true : false}
-        percent={10}
+        percent={0}
       />
     </div>
   );

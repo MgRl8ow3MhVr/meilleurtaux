@@ -61,23 +61,26 @@ hr {
 .choicecontenair {
   display: flex;
   justify-content: center;
-  padding: 20px 0 20px 0;
+  padding: 20px 0 60px 0;
 }
 
 .choicebox {
-  /* dipslay */
+  /* display */
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  /* Size */
+  min-height: 2.5rem;
+  margin-right: 10px;
+  padding: 10px 10px 10px 10px;
+
   /* Style */
   font-size: 0.7rem;
   font-weight: 700;
   border: solid 1px var(--grey);
-  padding: 20px 0 20px 0;
-  margin-right: 5px;
-  box-shadow: 3px 3px 3px 0px rgba(177, 177, 177, 0.56);
+  box-shadow: 2px 2px 2px 0px var(--grey);
 }
 .selected {
   background-color: var(--orange);
@@ -117,8 +120,9 @@ hr {
 /* # # # # # # # # # # PERCENTAGE BAR # # # # # # # # # # # # # # # #   */
 
 .percentagebar {
-  margin: 0 20px 0 20px;
+  margin: 0 10vw 0 10vw;
   width: 100%;
+  max-width: 400px;
   display: flex;
   align-items: center;
   position: relative;

@@ -43,7 +43,7 @@ const UsageDuBien = ({ MT, setMT }) => {
         prev="/etatDuBien"
         next="/situationActuelle"
         next_allowed={MT.usage ? true : false}
-        percent={80}
+        percent={30}
       />
     </div>
   );

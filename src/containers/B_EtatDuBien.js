@@ -35,7 +35,7 @@ const EtatDuBien = ({ MT, setMT }) => {
         prev="/typeDeBien"
         next="/usageDuBien"
         next_allowed={MT.etat ? true : false}
-        percent={30}
+        percent={15}
       />
     </div>
   );

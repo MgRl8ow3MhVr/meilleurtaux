@@ -9,7 +9,7 @@ const ChoiceBox = ({ name, chosen, checked, next }) => {
       className={checked ? "choicebox selected" : "choicebox"}
     >
       <input type="radio" checked={checked} readOnly />
-      {name.toUpperCase()}
+      <div>{name.toUpperCase()}</div>
     </Link>
   );
 };

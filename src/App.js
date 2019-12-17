@@ -10,9 +10,10 @@ import {
 import Cookies from "js-cookie";
 
 // Import Containers
-import TypeDeBien from "./containers/TypeDeBien";
-import EtatDuBien from "./containers/EtatDuBien";
-import UsageDuBien from "./containers/UsageDuBien";
+import TypeDeBien from "./containers/A_TypeDeBien";
+import EtatDuBien from "./containers/B_EtatDuBien";
+import UsageDuBien from "./containers/C_UsageDuBien";
+import SituationActuelle from "./containers/D_SituationActuelle";
 
 // Import Components
 import Header from "./components/Header";
@@ -52,17 +53,21 @@ const App = () => {
         <Router>
           <Header />
           <Switch>
-            {/* # # # # # # # TYPE DE BIEN # # # # # ## */}
+            {/* # # # # # # # 1 TYPE DE BIEN # # # # # ## */}
             <Route path="/typeDeBien">
               <TypeDeBien MT={MT} setMT={setMT} />
             </Route>
-            {/* # # # # # # # ETAT DU BIEN # # # # # ## */}
+            {/* # # # # # # # 2 ETAT DU BIEN # # # # # ## */}
             <Route path="/etatDuBien">
               <EtatDuBien MT={MT} setMT={setMT} />
             </Route>
-            {/* # # # # # # # ETAT DU BIEN # # # # # ## */}
+            {/* # # # # # # # 3 USAGE DU BIEN # # # # # ## */}
             <Route path="/usageDuBien">
               <UsageDuBien MT={MT} setMT={setMT} />
+            </Route>
+            {/* # # # # # # # 4 SITUATION ACTUELLE # # # # # ## */}
+            <Route path="/situationActuelle">
+              <SituationActuelle MT={MT} setMT={setMT} />
             </Route>
             {/* # # # # # # # DEFAULT ROUTE REDIRECTS TO CURRENT PAGE  # # # # # ## */}
             <Route path="/">
