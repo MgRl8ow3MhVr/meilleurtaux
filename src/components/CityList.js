@@ -10,6 +10,7 @@ const CityList = ({ input, click }) => {
         const response = await axios(
           "https://vicopo.selfbuild.fr/cherche/" + input
         );
+        console.log(response.data);
         await setData(response.data.cities.slice(0, 15));
       } catch (e) {
         console.log(e.message);

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PercentageBar from "./PercentageBar";
 
-const Navigation = ({ prev, next, next_allowed, percent, action }) => {
+const Navigation = ({ prev, next, next_allowed, percent }) => {
   return (
     <div className="navigation">
       <div className="navbar">
@@ -16,9 +16,9 @@ const Navigation = ({ prev, next, next_allowed, percent, action }) => {
           <Link to={next}>
             <div
               className="suivant"
-              onClick={() => {
-                action && action();
-              }}
+              // onClick={() => {
+              //   action && action();
+              // }}
             >
               SUIVANT
             </div>

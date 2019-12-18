@@ -15,6 +15,7 @@ import EtatDuBien from "./containers/B_EtatDuBien";
 import UsageDuBien from "./containers/C_UsageDuBien";
 import SituationActuelle from "./containers/D_SituationActuelle";
 import OuSeSitue from "./containers/E_OuSeSitue";
+import MontantProjet from "./containers/F_MontantProjet";
 
 // Import Components
 import Header from "./components/Header";
@@ -54,25 +55,29 @@ const App = () => {
         <Router>
           <Header />
           <Switch>
-            {/* # # # # # # # 1 TYPE DE BIEN # # # # # ## */}
+            {/* # # # # # # # A - TYPE DE BIEN # # # # # ## */}
             <Route path="/typeDeBien">
               <TypeDeBien MT={MT} setMT={setMT} />
             </Route>
-            {/* # # # # # # # 2 ETAT DU BIEN # # # # # ## */}
+            {/* # # # # # # # B - ETAT DU BIEN # # # # # ## */}
             <Route path="/etatDuBien">
               <EtatDuBien MT={MT} setMT={setMT} />
             </Route>
-            {/* # # # # # # # 3 USAGE DU BIEN # # # # # ## */}
+            {/* # # # # # # # C - USAGE DU BIEN # # # # # ## */}
             <Route path="/usageDuBien">
               <UsageDuBien MT={MT} setMT={setMT} />
             </Route>
-            {/* # # # # # # # 4 SITUATION ACTUELLE # # # # # ## */}
+            {/* # # # # # # # D - SITUATION ACTUELLE # # # # # ## */}
             <Route path="/situationActuelle">
               <SituationActuelle MT={MT} setMT={setMT} />
             </Route>
-            {/* # # # # # # # 5 OU SE SITUE # # # # # ## */}
+            {/* # # # # # # # E - OU SE SITUE # # # # # ## */}
             <Route path="/ouSeSitue">
               <OuSeSitue MT={MT} setMT={setMT} />
+            </Route>
+            {/* # # # # # # # F - MONTANT PROJET # # # # # ## */}
+            <Route path="/montantProjet">
+              <MontantProjet MT={MT} setMT={setMT} />
             </Route>
             {/* # # # # # # # DEFAULT ROUTE REDIRECTS TO CURRENT PAGE  # # # # # ## */}
             <Route path="/">

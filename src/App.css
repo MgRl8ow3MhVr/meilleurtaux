@@ -70,6 +70,7 @@ h1 {
   font-weight: 800;
   color: var(--orange);
   margin-right: 10px;
+  text-transform: uppercase;
 }
 
 /* # # # # # # # # # # CHOICE # # # # # # # # # # # # # # # #   */
@@ -173,7 +174,7 @@ h1 {
   }
 }
 
-/* # # # # # # # # # # FORMS # # # # # # # # # # # # # # # #   */
+/* # # # # # # # # # # FORMS GENERAL # # # # # # # # # # # # # # # #   */
 
 .inputbar {
   display: flex;
@@ -186,11 +187,13 @@ h1 {
 }
 
 .inputbar > h2 {
-  min-width: 250px;
+  min-width: 200px;
 }
 
-.inputbar input,
-.inputbar select {
+/* # # # # # # # # # # SPECIAL CITY INPUT # # # # # # # # # # # # # # # #   */
+
+/* City and Country inputs */
+.OuInput {
   min-width: 170px;
   border: solid 1px var(--orange);
   border-bottom-width: 2px;
@@ -198,13 +201,14 @@ h1 {
   font-weight: bold;
   padding-left: 5px;
   border-radius: 5px;
+  margin-left: 5px;
 }
 
-/* # # # # # # # # # # CITY INPUT # # # # # # # # # # # # # # # #   */
-
+/* city search List container */
 .cityinput {
   position: relative;
 }
+
 .cityinput > div {
   border: solid 1px var(--grey);
   background-color: white;
@@ -230,4 +234,18 @@ h1 {
   font-weight: bold;
   cursor: pointer;
   transform: scale(1.05);
+}
+
+/* # # # # # # # # # # SPECIAL PRICES INPUT # # # # # # # # # # # # # # # #   */
+
+input {
+  min-width: 140px;
+  border: solid 1px var(--orange);
+  border-bottom-width: 2px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 4px 5px 4px 0;
+  border-radius: 5px;
+  text-align: right;
+  margin: 0 5px 0 5px;
 }
