@@ -1,5 +1,4 @@
 import React from "react";
-// import logo from "../assets/logo-mtx.jpg";
 import logo from "../assets/meilleurtaux.png";
 
 const Header = () => {

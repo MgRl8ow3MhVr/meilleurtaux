@@ -1,7 +1,7 @@
 import React from "react";
 import ChoiceBox from "../components/ChoiceBox";
 import Navigation from "../components/Navigation";
-import Info from "../assets/Info";
+import Info from "../assets/infos.png";
 
 const UsageDuBien = ({ MT, setMT }) => {
   //Save the current page on landing.
@@ -11,8 +11,10 @@ const UsageDuBien = ({ MT, setMT }) => {
 
   return (
     <div className="page">
-      <h1>USAGE DU BIEN</h1>
-      <Info />
+      <div className="title">
+        <h1>USAGE DU BIEN</h1>
+        <img src={Info} height="25px" alt="i" />
+      </div>
       <div className="choicecontenair">
         <ChoiceBox
           name="résidence principale"
