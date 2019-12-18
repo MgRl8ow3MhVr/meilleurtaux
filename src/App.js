@@ -16,6 +16,8 @@ import UsageDuBien from "./containers/C_UsageDuBien";
 import SituationActuelle from "./containers/D_SituationActuelle";
 import OuSeSitue from "./containers/E_OuSeSitue";
 import MontantProjet from "./containers/F_MontantProjet";
+import Coordonnees from "./containers/G_Coordonnees";
+import EtVoila from "./containers/H_EtVoila";
 
 // Import Components
 import Header from "./components/Header";
@@ -78,6 +80,14 @@ const App = () => {
             {/* # # # # # # # F - MONTANT PROJET # # # # # ## */}
             <Route path="/montantProjet">
               <MontantProjet MT={MT} setMT={setMT} />
+            </Route>
+            {/* # # # # # # # G - COORDONNEES # # # # # ## */}
+            <Route path="/coordonnees">
+              <Coordonnees MT={MT} setMT={setMT} />
+            </Route>
+            {/* # # # # # # # H - ET VOILA # # # # # ## */}
+            <Route path="/etVoila">
+              <EtVoila MT={MT} setMT={setMT} />
             </Route>
             {/* # # # # # # # DEFAULT ROUTE REDIRECTS TO CURRENT PAGE  # # # # # ## */}
             <Route path="/">

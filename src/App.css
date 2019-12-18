@@ -189,14 +189,20 @@ h1 {
 .inputbar > h2 {
   min-width: 200px;
 }
+.orangeborder {
+  border: solid 1px var(--orange);
+  border-bottom-width: 2px;
+}
+.greyborder {
+  border: solid 1px var(--grey);
+}
 
 /* # # # # # # # # # # SPECIAL CITY INPUT # # # # # # # # # # # # # # # #   */
 
 /* City and Country inputs */
 .OuInput {
   min-width: 170px;
-  border: solid 1px var(--orange);
-  border-bottom-width: 2px;
+
   font-size: 0.9rem;
   font-weight: bold;
   padding-left: 5px;
@@ -238,14 +244,40 @@ h1 {
 
 /* # # # # # # # # # # SPECIAL PRICES INPUT # # # # # # # # # # # # # # # #   */
 
-input {
+.priceinput {
   min-width: 140px;
-  border: solid 1px var(--orange);
-  border-bottom-width: 2px;
   font-size: 0.9rem;
   font-weight: bold;
   padding: 4px 5px 4px 0;
   border-radius: 5px;
   text-align: right;
   margin: 0 5px 0 5px;
+}
+
+/* # # # # # # # # # # COORDONNEES  # # # # # # # # # # # # # # # #   */
+
+.visual {
+  display: flex;
+  padding: 0 20px 10px 20px;
+  justify-content: center;
+}
+
+.visual > div {
+  /* width: 100px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--orange);
+  color: white;
+  padding: 20px 10px 20px 5px;
+  text-align: center;
+  font-weight: bold;
+  max-width: 200px;
+  font-size: 0.9rem;
+}
+
+.visual > img {
+  width: 300px;
+  object-fit: cover;
+  padding: 0 0 15px 10px;
 }

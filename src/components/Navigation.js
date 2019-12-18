@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PercentageBar from "./PercentageBar";
 
-const Navigation = ({ prev, next, next_allowed, percent }) => {
+//AJOUTER MESSAGE D ERREUR
+
+const Navigation = ({ prev, next, next_allowed, percent, valider }) => {
   return (
     <div className="navigation">
       <div className="navbar">
@@ -16,11 +18,13 @@ const Navigation = ({ prev, next, next_allowed, percent }) => {
           <Link to={next}>
             <div
               className="suivant"
-              // onClick={() => {
-              //   action && action();
-              // }}
+              onClick={() => {
+                if (valider) {
+                  valider();
+                }
+              }}
             >
-              SUIVANT
+              {valider ? "VALIDER" : "SUIVANT"}
             </div>
           </Link>
         ) : (
@@ -30,7 +34,7 @@ const Navigation = ({ prev, next, next_allowed, percent }) => {
               alert("vous n'avez pas renseigné tous les champs");
             }}
           >
-            SUIVANT
+            {valider ? "VALIDER" : "SUIVANT"}
           </div>
         )}
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Info from "../assets/infos.png";
 
@@ -29,6 +29,7 @@ const MontantProjet = ({ MT, setMT }) => {
         <h2>Montant estimé de votre acquisition*</h2>
         <img src={Info} height="18px" alt="i" />
         <input
+          className="priceinput orangeborder"
           type="text"
           value={acquisition}
           onChange={event => {
@@ -50,6 +51,7 @@ const MontantProjet = ({ MT, setMT }) => {
         <h2>Montant estimé des travaux*</h2>
         <img src={Info} height="18px" alt="i" />
         <input
+          className="priceinput orangeborder"
           type="text"
           value={travaux}
           onChange={event => {
@@ -64,13 +66,20 @@ const MontantProjet = ({ MT, setMT }) => {
       <div className="inputbar grey">
         <h2>Frais de notaire*</h2>
         <img src={Info} height="18px" alt="i" />
-        <input value={acquisition && notaire(acquisition)} />€
+        <input
+          className="priceinput orangeborder"
+          readOnly
+          value={acquisition && notaire(acquisition)}
+        />
+        €
       </div>
       {/* # # # # # # INPUT TOTAL # # # # # # # # # # # # #  */}
       <div className="inputbar">
         <h2>Budget total estimé du projet*</h2>
         <img src={Info} height="18px" alt="i" />
         <input
+          className="priceinput greyborder"
+          readOnly
           type="text"
           value={
             acquisition &&
@@ -83,7 +92,7 @@ const MontantProjet = ({ MT, setMT }) => {
       {/* # # # # # # NAV BAR BOTTOM # # # # # # # # # # # # #  */}
       <Navigation
         prev="/ouSeSitue"
-        next="/montantProjet"
+        next="/coordonnees"
         next_allowed={MT.acquisition ? true : false}
         percent={75}
       />
