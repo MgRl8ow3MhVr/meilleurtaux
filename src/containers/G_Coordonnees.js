@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Navigation from "../components/Navigation";
+import Cookies from "js-cookie";
+
 import Info from "../assets/infos.png";
 import visuel from "../assets/visuel-desktop-email.jpg";
 
@@ -60,7 +62,8 @@ const Coordonnees = ({ MT, setMT }) => {
         next_allowed={email && accept}
         percent={99}
         valider={() => {
-          alert("hello");
+          alert("fonction de validation");
+          Cookies.remove("meilleurtaux");
         }}
       />
     </div>
