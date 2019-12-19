@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 import Info from "../assets/infos.png";
 import visuel from "../assets/visuel-desktop-email.jpg";
@@ -9,6 +10,23 @@ const Coordonnees = ({ MT, setMT }) => {
   const [email, setEmail] = useState(MT.email ? MT.email : null);
   const [accept, setAccept] = useState(MT.acceptemail);
 
+  const UploadDatas = async () => {
+    try {
+      const response = await axios.post("http://localhost:3100/deviscreation", {
+        email: MT.email,
+        type: MT.type,
+        etat: MT.etat,
+        usage: MT.usage,
+        situation: MT.situation,
+        montant: MT.acquisition + (MT.travaux ? MT.travaux : 0),
+        zip: MT.ouSeSitue.zip
+      });
+    } catch (e) {
+      console.log(e.message);
+      alert(e.message);
+      return;
+    }
+  };
   //Save the current page on landing.
   if (MT.currPage !== "/coordonnees") {
     setMT({ ...MT, currPage: "/coordonnees" });
@@ -62,8 +80,9 @@ const Coordonnees = ({ MT, setMT }) => {
         next_allowed={email && accept}
         percent={99}
         valider={() => {
-          alert("fonction de validation");
+          UploadDatas();
           Cookies.remove("meilleurtaux");
+          setMT({ currPage: "/typeDeBien" });
         }}
       />
     </div>

@@ -8,7 +8,9 @@ const countries = ["FRANCE", "ALLEMAGNE", "BELGIQUE", "ITALIE"];
 const OuSeSitue = ({ MT, setMT }) => {
   // initialize country to what's in the global state otherwise France by default
   const initcountry = MT.ouSeSitue ? MT.ouSeSitue.country : "FRANCE";
-  const initcity = MT.ouSeSitue ? MT.ouSeSitue.city : null;
+  const initcity = MT.ouSeSitue.zip
+    ? `${MT.ouSeSitue.city} (${MT.ouSeSitue.zip})`
+    : null;
   const [country, setCountry] = useState(initcountry);
   const [citySearch, setCitySearch] = useState(initcity);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -66,20 +68,20 @@ const OuSeSitue = ({ MT, setMT }) => {
               setCitySearch("");
               setMT({
                 ...MT,
-                ouSeSitue: { country: country, city: null }
+                ouSeSitue: { country: country }
               });
             }}
           />
           {searchOpen && citySearch && (
             <CityList
               input={citySearch}
-              click={cityAndCode => {
+              click={(city, zip) => {
                 return () => {
-                  setCitySearch(cityAndCode);
+                  setCitySearch(`${city} (${zip})`);
                   setSearchOpen(false);
                   setMT({
                     ...MT,
-                    ouSeSitue: { country: country, city: cityAndCode }
+                    ouSeSitue: { country: country, city: city, zip: zip }
                   });
                 };
               }}
@@ -100,9 +102,6 @@ const OuSeSitue = ({ MT, setMT }) => {
         next="/montantProjet"
         next_allowed={MT.ouSeSitue && MT.ouSeSitue.country && MT.ouSeSitue.city}
         percent={60}
-        // action={() => {
-        //   setMT({ ...MT, ouSeSitue: { country: country, city: citySearch } });
-        // }}
       />
     </div>
   );
