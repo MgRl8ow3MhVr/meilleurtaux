@@ -8,9 +8,7 @@ const countries = ["FRANCE", "ALLEMAGNE", "BELGIQUE", "ITALIE"];
 const OuSeSitue = ({ MT, setMT }) => {
   // initialize country to what's in the global state otherwise France by default
   const initcountry = MT.ouSeSitue ? MT.ouSeSitue.country : "FRANCE";
-  const initcity = MT.ouSeSitue.zip
-    ? `${MT.ouSeSitue.city} (${MT.ouSeSitue.zip})`
-    : null;
+  const initcity = MT.zip && MT.city ? `${MT.city} (${MT.zip})` : null;
   const [country, setCountry] = useState(initcountry);
   const [citySearch, setCitySearch] = useState(initcity);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -36,7 +34,7 @@ const OuSeSitue = ({ MT, setMT }) => {
             setCountry(event.target.value);
             setMT({
               ...MT,
-              ouSeSitue: { country: event.target.value, city: citySearch }
+              country: event.target.value
             });
           }}
         >
@@ -68,7 +66,8 @@ const OuSeSitue = ({ MT, setMT }) => {
               setCitySearch("");
               setMT({
                 ...MT,
-                ouSeSitue: { country: country }
+                zip: null,
+                city: null
               });
             }}
           />
@@ -81,7 +80,9 @@ const OuSeSitue = ({ MT, setMT }) => {
                   setSearchOpen(false);
                   setMT({
                     ...MT,
-                    ouSeSitue: { country: country, city: city, zip: zip }
+                    city: city,
+                    zip: zip,
+                    country: country
                   });
                 };
               }}
@@ -100,7 +101,7 @@ const OuSeSitue = ({ MT, setMT }) => {
       <Navigation
         prev="/situationActuelle"
         next="/montantProjet"
-        next_allowed={MT.ouSeSitue && MT.ouSeSitue.country && MT.ouSeSitue.city}
+        next_allowed={MT.zip && MT.country && MT.city}
         percent={60}
       />
     </div>

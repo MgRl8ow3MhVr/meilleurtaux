@@ -6,9 +6,10 @@ import axios from "axios";
 import Info from "../assets/infos.png";
 import visuel from "../assets/visuel-desktop-email.jpg";
 
-const Coordonnees = ({ MT, setMT }) => {
+const Coordonnees = ({ MT, setMT, setFinalId }) => {
   const [email, setEmail] = useState(MT.email ? MT.email : null);
   const [accept, setAccept] = useState(MT.acceptemail);
+  const [id, setID] = useState();
 
   const UploadDatas = async () => {
     try {
@@ -19,8 +20,12 @@ const Coordonnees = ({ MT, setMT }) => {
         usage: MT.usage,
         situation: MT.situation,
         montant: MT.acquisition + (MT.travaux ? MT.travaux : 0),
-        zip: MT.ouSeSitue.zip
+        zip: MT.zip
       });
+      console.log("reponse server");
+      console.log(response.data);
+      console.log("from upoad data", response.data.id);
+      setFinalId(response.data.id);
     } catch (e) {
       console.log(e.message);
       alert(e.message);
@@ -76,7 +81,7 @@ const Coordonnees = ({ MT, setMT }) => {
       {/* # # # # # # NAV BAR BOTTOM # # # # # # # # # # # # #  */}
       <Navigation
         prev="/montantProjet"
-        next="/etVoila"
+        next="/etVoila/"
         next_allowed={email && accept}
         percent={99}
         valider={() => {

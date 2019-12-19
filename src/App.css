@@ -281,3 +281,16 @@ h1 {
   object-fit: cover;
   padding: 0 0 15px 10px;
 }
+
+/* # # # # # # # # # # BACK OFFICE # # # # # # # # # # # # # # # #   */
+
+.backofficebody {
+  margin: 30px;
+  border: solid 5px;
+}
+
+.backofficebody span {
+  font-size: 1rem;
+  width: 100px;
+  margin: 10px;
+}

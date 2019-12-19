@@ -18,6 +18,7 @@ import OuSeSitue from "./containers/E_OuSeSitue";
 import MontantProjet from "./containers/F_MontantProjet";
 import Coordonnees from "./containers/G_Coordonnees";
 import EtVoila from "./containers/H_EtVoila";
+import Admin from "./containers/Admin";
 
 // Import Components
 import Header from "./components/Header";
@@ -27,6 +28,8 @@ const App = () => {
   const [MT, setMT] = useState({ currPage: "/typeDeBien" });
   console.log("MTApp", MT);
   const [loadingCookie, setLoadingCookie] = useState(true);
+  //id to be passed from page coordonnees to final page
+  const [finalId, setFinalId] = useState();
 
   // Cookie Handling - Only on fisrt landing
   // if doesn't exist then create it empty (first time)
@@ -83,11 +86,15 @@ const App = () => {
             </Route>
             {/* # # # # # # # G - COORDONNEES # # # # # ## */}
             <Route path="/coordonnees">
-              <Coordonnees MT={MT} setMT={setMT} />
+              <Coordonnees MT={MT} setMT={setMT} setFinalId={setFinalId} />
             </Route>
             {/* # # # # # # # H - ET VOILA # # # # # ## */}
             <Route path="/etVoila">
-              <EtVoila MT={MT} setMT={setMT} />
+              <EtVoila MT={MT} setMT={setMT} finalId={finalId} />
+            </Route>
+            {/* # # # # # # # ADMINISTRATION PAGE # # # # # ## */}
+            <Route path="/admin">
+              <Admin />
             </Route>
             {/* # # # # # # # DEFAULT ROUTE REDIRECTS TO CURRENT PAGE  # # # # # ## */}
             <Route path="/">
