@@ -3,12 +3,14 @@ import axios from "axios";
 import trash from "../assets/trash.jpg";
 import AdminOneItem from "./AdminOneItem";
 import BackEndAddress from "./BackEndAddress";
+import BG from "../assets/BG.mp3";
 
-const AdminListDevis = ({ token, unlog, ms }) => {
+const AdminListDevis = ({ token, unlog }) => {
   const [data, setData] = useState([]);
   const [listendelete, setListendelete] = useState(false);
-
   const [reload, setReload] = useState(1);
+  const [speed, setSpeed] = useState(1);
+  // const [speed, setSpeed] = useState(576);
 
   const colorGenerator = useCallback(() => {
     let col = "";
@@ -33,8 +35,17 @@ const AdminListDevis = ({ token, unlog, ms }) => {
   useEffect(() => {
     setTimeout(() => {
       setReload(reload + 1);
-    }, ms);
+    }, Number(1 / speed) * 576);
   }, [reload]);
+
+  useEffect(() => {
+    const audio = new Audio(BG);
+    audio.play();
+    audio.playbackRate = Number(speed);
+    return () => {
+      audio.pause();
+    };
+  }, [speed]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,13 +66,23 @@ const AdminListDevis = ({ token, unlog, ms }) => {
           style={{ backgroundColor: colorGenerator(), paddingBottom: "100px" }}
         >
           <h1> administration </h1>
-          <h2> Avec Style Aleatoire </h2>
-          <button
-            style={{ border: "solid 2px", backgroundColor: "red" }}
-            onClick={unlog}
-          >
-            CLICK TO LOG OUT
-          </button>
+          <div className="adminbar">
+            <button
+              onClick={() => {
+                setSpeed(Number(speed) * 1.5);
+              }}
+            >
+              <span>+</span>
+            </button>
+            <button onClick={unlog}>LOG OUT</button>
+            <button
+              onClick={() => {
+                setSpeed(Number(speed) / 1.5);
+              }}
+            >
+              <span>-</span>
+            </button>
+          </div>
           <div
             className="backofficebody"
             style={{ backgroundColor: colorGenerator() }}

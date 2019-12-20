@@ -62,6 +62,19 @@ hr {
   border-top: solid 1px var(--grey);
 }
 
+.adminbutton {
+  background-color: var(--orange);
+  padding: 2px;
+  border: solid 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8px;
+  height: 15px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
 /* # # # # # # # # # # TITLES # # # # # # # # # # # # # # # #   */
 .title {
   display: flex;
@@ -309,6 +322,39 @@ h1 {
 .backofficebody img {
   height: 30px;
 }
+.adminbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.adminbar > button {
+  margin-right: 20px;
+  height: 60px;
+  width: 60px;
+  border: solid 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 2rem;
+  transition: all 0.2s linear;
+}
+.adminbar > button:hover {
+  transform: scale(1.5);
+  background-color: orange;
+}
+
+.adminbar > button > span {
+  font-size: 2rem;
+}
+
+.adminbar > button:nth-child(2) {
+  background-color: red;
+  font-size: 0.8rem;
+  height: 45px;
+  width: 45px;
+}
 
 /* # # # # # # # # # # AUTHENT PAGE # # # # # # # # # # # # # # # #   */
 
@@ -327,8 +373,8 @@ h1 {
 }
 
 .authent img {
-  width: 200px;
-  height: 200px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
 }
 

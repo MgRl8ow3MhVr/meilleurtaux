@@ -31,6 +31,7 @@ const Navigation = ({ prev, next, next_allowed, percent, valider }) => {
           <div
             className="suivant"
             onClick={() => {
+              console.log("ICI");
               alert("vous n'avez pas renseigné tous les champs");
             }}
           >

@@ -7,14 +7,7 @@ const Header = () => {
     <header>
       <div>
         <img src={logo} alt="logo" />
-        <Link
-          to="/Admin"
-          style={{
-            backgroundColor: "grey",
-            border: "solid 1px",
-            fontSize: "10px"
-          }}
-        >
+        <Link to="/Admin" className="adminbutton">
           Admin
         </Link>
       </div>

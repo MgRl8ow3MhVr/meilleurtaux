@@ -8,7 +8,6 @@ import BackEndAddress from "../components/BackEndAddress";
 const Admin = () => {
   const [token, setToken] = useState();
   const [password, setPassword] = useState();
-  const [ms, setMs] = useState();
 
   const sendPassword = async password => {
     try {
@@ -18,7 +17,7 @@ const Admin = () => {
       const tok = response.data.token;
       if (tok) {
         setToken(tok);
-        Cookies.set("token", { tok: tok, ms: ms });
+        Cookies.set("token", { tok: tok });
       } else {
         alert("mauvais mot de passe");
       }
@@ -29,7 +28,6 @@ const Admin = () => {
 
   const unlog = () => {
     setToken(null);
-    setMs(null);
     setPassword(null);
     Cookies.remove("token");
   };
@@ -39,9 +37,7 @@ const Admin = () => {
       let cookie = await Cookies.get("token");
 
       if (cookie) {
-        cookie = JSON.parse(cookie);
-        setToken(cookie.tok);
-        setMs(cookie.ms);
+        setToken(cookie);
       }
     };
     fetchCookie();
@@ -60,25 +56,17 @@ const Admin = () => {
         Retour au Formulaire
       </Link>
       {token ? (
-        <AdminListDevis token={token} unlog={unlog} ms={ms} />
+        <AdminListDevis token={token} unlog={unlog} />
       ) : (
         <div className="authent">
           <img
-            src="https://www.bm-lyon.fr/expo/virtuelles/chaperon/gravure2.jpg"
+            src="https://media1.giphy.com/media/K20uJQyNnchq0/source.gif"
             alt="bobinette"
           />
           <form
             onSubmit={event => {
               event.preventDefault();
-              if (ms) {
-                if (Number(ms) > 19 && Number(ms) < 3000) {
-                  sendPassword(password);
-                } else {
-                  alert("on a dit entre 20 et 3000");
-                }
-              } else {
-                alert("vous avez oublié les millisecondes");
-              }
+              sendPassword(password);
             }}
           >
             <input
@@ -89,19 +77,8 @@ const Admin = () => {
                 setPassword(event.target.value);
               }}
             />
-            <input
-              type="text"
-              placeHolder="tapez un chiffre entre 20 et 3000 (millisecondes)"
-              value={ms}
-              onChange={event => {
-                setMs(event.target.value);
-              }}
-            />
-            <input
-              // style={{ backgroundColor: "red" }}
-              type="submit"
-              value="Tire la chevillette et la bobinette cherra"
-            />
+
+            <input type="submit" value="Are you Ready for This ?" />
           </form>
         </div>
       )}
