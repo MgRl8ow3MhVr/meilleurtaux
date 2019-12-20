@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Cookies from "js-cookie";
 import axios from "axios";
+import BackEndAddress from "../components/BackEndAddress";
 
 import Info from "../assets/infos.png";
 import visuel from "../assets/visuel-desktop-email.jpg";
@@ -13,7 +14,7 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
 
   const UploadDatas = async () => {
     try {
-      const response = await axios.post("http://localhost:3100/deviscreation", {
+      const response = await axios.post(BackEndAddress + "/deviscreation", {
         email: MT.email,
         type: MT.type,
         etat: MT.etat,
@@ -86,8 +87,8 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
         percent={99}
         valider={() => {
           UploadDatas();
-          Cookies.remove("meilleurtaux");
-          setMT({ currPage: "/typeDeBien" });
+          // Cookies.remove("meilleurtaux");
+          // setMT({ currPage: "/typeDeBien" });
         }}
       />
     </div>

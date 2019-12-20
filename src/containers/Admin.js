@@ -1,90 +1,109 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import AdminListDevis from "../components/AdminListDevis";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
+import BackEndAddress from "../components/BackEndAddress";
 
-const colorGenerator = () => {
-  let col = "";
-  for (let i = 0; i < 6; i++) {
-    col += Math.floor(Math.random() * 16).toString(16);
-  }
-  return "#" + col;
-};
-
-const sizeGenerator = () => {
-  return 5 + Math.floor(Math.random() * 30);
-};
-
-console.log(colorGenerator());
 const Admin = () => {
-  const [data, setData] = useState([]);
+  const [token, setToken] = useState();
+  const [password, setPassword] = useState();
+  const [ms, setMs] = useState();
+
+  const sendPassword = async password => {
+    try {
+      const response = await axios.post(BackEndAddress + "/authent", {
+        password: password
+      });
+      const tok = response.data.token;
+      if (tok) {
+        setToken(tok);
+        Cookies.set("token", { tok: tok, ms: ms });
+      } else {
+        alert("mauvais mot de passe");
+      }
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+  const unlog = () => {
+    setToken(null);
+    setMs(null);
+    setPassword(null);
+    Cookies.remove("token");
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3100/getdevis");
-        setData(response.data.alldevis);
-      } catch (e) {
-        console.log(e.message);
+    const fetchCookie = async () => {
+      let cookie = await Cookies.get("token");
+
+      if (cookie) {
+        cookie = JSON.parse(cookie);
+        setToken(cookie.tok);
+        setMs(cookie.ms);
       }
     };
-    fetchData();
+    fetchCookie();
   }, []);
 
   return (
     <>
-      {data && (
-        <>
-          <h1> administration </h1>
-          <h2> Avec Style Aleatoire </h2>
-          <div className="backofficebody">
-            {data.map((devis, index) => {
-              return (
-                <div
-                  key={index}
-                  style={{
-                    color: colorGenerator(),
-                    backgroundColor: colorGenerator()
-                  }}
-                >
-                  <span
-                    style={{
-                      color: colorGenerator(),
-                      backgroundColor: colorGenerator(),
-                      fontSize: sizeGenerator()
-                    }}
-                  >
-                    {devis.email}
-                  </span>
-                  <span
-                    style={{
-                      color: colorGenerator(),
-                      backgroundColor: colorGenerator(),
-                      fontSize: sizeGenerator()
-                    }}
-                  >
-                    {devis.zip}
-                  </span>
-                  <span
-                    style={{
-                      color: colorGenerator(),
-                      backgroundColor: colorGenerator(),
-                      fontSize: sizeGenerator()
-                    }}
-                  >
-                    {devis.type}
-                  </span>
-                  <span
-                    style={{
-                      color: colorGenerator(),
-                      backgroundColor: colorGenerator(),
-                      fontSize: sizeGenerator()
-                    }}
-                  >
-                    {devis.etat}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </>
+      <Link
+        to="/"
+        style={{
+          backgroundColor: "purple",
+          border: "solid 1px",
+          color: "white"
+        }}
+      >
+        Retour au Formulaire
+      </Link>
+      {token ? (
+        <AdminListDevis token={token} unlog={unlog} ms={ms} />
+      ) : (
+        <div className="authent">
+          <img
+            src="https://www.bm-lyon.fr/expo/virtuelles/chaperon/gravure2.jpg"
+            alt="bobinette"
+          />
+          <form
+            onSubmit={event => {
+              event.preventDefault();
+              if (ms) {
+                if (Number(ms) > 19 && Number(ms) < 3000) {
+                  sendPassword(password);
+                } else {
+                  alert("on a dit entre 20 et 3000");
+                }
+              } else {
+                alert("vous avez oublié les millisecondes");
+              }
+            }}
+          >
+            <input
+              type="text"
+              value={password}
+              placeHolder="mot de passe (indice: vers la lune)"
+              onChange={event => {
+                setPassword(event.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeHolder="tapez un chiffre entre 20 et 3000 (millisecondes)"
+              value={ms}
+              onChange={event => {
+                setMs(event.target.value);
+              }}
+            />
+            <input
+              // style={{ backgroundColor: "red" }}
+              type="submit"
+              value="Tire la chevillette et la bobinette cherra"
+            />
+          </form>
+        </div>
       )}
     </>
   );

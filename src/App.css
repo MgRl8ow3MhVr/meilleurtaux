@@ -49,8 +49,12 @@ header {
   font-size: 18px;
 }
 
-header > img {
+header img {
   width: 300px;
+}
+header > div {
+  display: flex;
+  justify-content: space-between;
 }
 
 hr {
@@ -289,8 +293,56 @@ h1 {
   border: solid 5px;
 }
 
+.backofficebody > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+}
+
 .backofficebody span {
   font-size: 1rem;
   width: 100px;
   margin: 10px;
+}
+
+.backofficebody img {
+  height: 30px;
+}
+
+/* # # # # # # # # # # AUTHENT PAGE # # # # # # # # # # # # # # # #   */
+
+.authent {
+  background-color: rgb(226, 230, 230);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+.authent form {
+  display: flex;
+  flex-direction: column;
+}
+
+.authent img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.authent input {
+  padding: 5px;
+  margin: 10px 10px 10px 0;
+  width: 200px;
+}
+
+.authent input:nth-child(3) {
+  background-color: rgb(223, 223, 223);
+  box-shadow: 3px 3px 3px 0px rgba(177, 177, 177, 0.56);
+  border: solid 2px;
+}
+.authent input:nth-child(3):active {
+  background-color: rgb(225, 147, 147);
 }
