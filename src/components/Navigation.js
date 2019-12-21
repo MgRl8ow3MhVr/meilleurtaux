@@ -1,18 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PercentageBar from "./PercentageBar";
-import mhmh from "../assets/sounds/mhmh.mp3";
-import nanana from "../assets/sounds/nanana.mp3";
-import goodboy from "../assets/sounds/goodboy.mp3";
 import mauvais from "../assets/sounds/mauvais.mp3";
+import nanana from "../assets/sounds/nanana.mp3";
 
 //AJOUTER MESSAGE D ERREUR
 
-const Navigation = ({ prev, next, next_allowed, percent, valider }) => {
-  const nananaSound = new Audio(nanana);
-  const mhmhSound = new Audio(mhmh);
-  const goodboySound = new Audio(goodboy);
+const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
   const mauvaisSound = new Audio(mauvais);
+  const nananaSound = new Audio(nanana);
 
   return (
     <div className="navigation">
@@ -21,7 +17,9 @@ const Navigation = ({ prev, next, next_allowed, percent, valider }) => {
           <div
             className="precedent"
             onClick={() => {
-              mauvaisSound.play();
+              if (prev === "/typeDeBien") {
+                mauvaisSound.play();
+              }
             }}
           >
             PRECEDENT
@@ -35,11 +33,9 @@ const Navigation = ({ prev, next, next_allowed, percent, valider }) => {
             <div
               className="suivant"
               onClick={() => {
+                sound.play();
                 if (valider) {
-                  goodboySound.play();
                   valider();
-                } else {
-                  mhmhSound.play();
                 }
               }}
             >

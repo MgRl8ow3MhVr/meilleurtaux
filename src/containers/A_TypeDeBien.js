@@ -2,6 +2,7 @@ import React from "react";
 import ChoiceBox from "../components/ChoiceBox";
 import Navigation from "../components/Navigation";
 import Info from "../assets/infos.png";
+import mhmh from "../assets/sounds/mhmh.mp3";
 
 const TypeDeBien = ({ MT, setMT }) => {
   //Save the current page on landing.
@@ -9,6 +10,7 @@ const TypeDeBien = ({ MT, setMT }) => {
   if (MT.currPage !== "/typeDeBien") {
     setMT({ ...MT, currPage: "/typeDeBien" });
   }
+  const mhmhSound = new Audio(mhmh);
 
   return (
     <div className="page">
@@ -21,6 +23,7 @@ const TypeDeBien = ({ MT, setMT }) => {
           name="maison"
           chosen={() => {
             setMT({ ...MT, type: "maison" });
+            mhmhSound.play();
           }}
           checked={MT.type === "maison"}
           next="/etatDuBien"
@@ -29,6 +32,7 @@ const TypeDeBien = ({ MT, setMT }) => {
           name="appartement"
           chosen={() => {
             setMT({ ...MT, type: "appartement" });
+            mhmhSound.play();
           }}
           checked={MT.type === "appartement"}
           next="/etatDuBien"
@@ -39,6 +43,7 @@ const TypeDeBien = ({ MT, setMT }) => {
         next="/etatDuBien"
         next_allowed={MT.type ? true : false}
         percent={0}
+        sound={mhmhSound}
       />
     </div>
   );

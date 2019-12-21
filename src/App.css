@@ -304,6 +304,7 @@ h1 {
 .backofficebody {
   margin: 30px;
   border: solid 5px;
+  transition: all 0.1s linear;
 }
 
 .backofficebody > div {
@@ -338,7 +339,7 @@ h1 {
   align-items: center;
   padding: 0;
   border-radius: 2rem;
-  transition: all 0.2s linear;
+  transition: all 0.1s linear;
 }
 .adminbar > button:hover {
   transform: scale(1.5);

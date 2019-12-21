@@ -2,12 +2,14 @@ import React from "react";
 import ChoiceBox from "../components/ChoiceBox";
 import Navigation from "../components/Navigation";
 import Info from "../assets/infos.png";
+import oui from "../assets/sounds/oui.mp3";
 
 const EtatDuBien = ({ MT, setMT }) => {
   //Save the current page
   if (MT.currPage !== "/etatDuBien") {
     setMT({ ...MT, currPage: "/etatDuBien" });
   }
+  const ouiSound = new Audio(oui);
 
   return (
     <div className="page">
@@ -20,6 +22,7 @@ const EtatDuBien = ({ MT, setMT }) => {
           name="ancien"
           chosen={() => {
             setMT({ ...MT, etat: "ancien" });
+            ouiSound.play();
           }}
           checked={MT.etat === "ancien"}
           next="/usageDuBien"
@@ -28,6 +31,7 @@ const EtatDuBien = ({ MT, setMT }) => {
           name="neuf"
           chosen={() => {
             setMT({ ...MT, etat: "neuf" });
+            ouiSound.play();
           }}
           checked={MT.etat === "neuf"}
           next="/usageDuBien"
@@ -38,6 +42,7 @@ const EtatDuBien = ({ MT, setMT }) => {
         next="/usageDuBien"
         next_allowed={MT.etat ? true : false}
         percent={15}
+        sound={ouiSound}
       />
     </div>
   );

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import CityList from "../components/CityList";
 import Info from "../assets/infos.png";
+import yes from "../assets/sounds/yes.mp3";
 
-const countries = ["FRANCE", "ALLEMAGNE", "BELGIQUE", "ITALIE"];
+const countries = ["FRANCE", "ALLEMAGNE", "BELGIQUE", "ITALIE", "AUTRE PAYS"];
 
 const OuSeSitue = ({ MT, setMT }) => {
   // initialize country to what's in the global state otherwise France by default
@@ -12,6 +13,8 @@ const OuSeSitue = ({ MT, setMT }) => {
   const [country, setCountry] = useState(initcountry);
   const [citySearch, setCitySearch] = useState(initcity);
   const [searchOpen, setSearchOpen] = useState(false);
+
+  const yesSound = new Audio(yes);
 
   //Save the current page on landing.
   if (MT.currPage !== "/ouSeSitue") {
@@ -103,6 +106,7 @@ const OuSeSitue = ({ MT, setMT }) => {
         next="/montantProjet"
         next_allowed={MT.zip && MT.country && MT.city}
         percent={60}
+        sound={yesSound}
       />
     </div>
   );

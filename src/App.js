@@ -18,7 +18,7 @@ import OuSeSitue from "./containers/E_OuSeSitue";
 import MontantProjet from "./containers/F_MontantProjet";
 import Coordonnees from "./containers/G_Coordonnees";
 import EtVoila from "./containers/H_EtVoila";
-import Admin from "./containers/Admin";
+import Z_Admin from "./containers/Z_Admin";
 
 // Import Components
 import Header from "./components/Header";
@@ -94,7 +94,7 @@ const App = () => {
             </Route>
             {/* # # # # # # # ADMINISTRATION PAGE # # # # # ## */}
             <Route path="/admin">
-              <Admin />
+              <Z_Admin />
             </Route>
             {/* # # # # # # # DEFAULT ROUTE REDIRECTS TO CURRENT PAGE  # # # # # ## */}
             <Route path="/">

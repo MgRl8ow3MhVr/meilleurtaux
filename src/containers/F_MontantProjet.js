@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Info from "../assets/infos.png";
+import allez from "../assets/sounds/allez.mp3";
 
 const MontantProjet = ({ MT, setMT }) => {
   const [acquisition, setAcquisition] = useState(MT.acquisition);
   const [travaux, setTravaux] = useState(MT.travaux);
+  const allezSound = new Audio(allez);
 
   const notaire = num => {
     if (MT.etat === "neuf") {
@@ -95,6 +97,7 @@ const MontantProjet = ({ MT, setMT }) => {
         next="/coordonnees"
         next_allowed={MT.acquisition ? true : false}
         percent={75}
+        sound={allezSound}
       />
     </div>
   );

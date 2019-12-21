@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 
-const AdminOneItem = ({ name, randomSize }) => {
+const AdminOneItem = ({ name, randomSize, devis }) => {
   const sizeGenerator = useCallback(() => {
     return 5 + Math.floor(Math.random() * 30);
   }, []);
@@ -18,6 +18,12 @@ const AdminOneItem = ({ name, randomSize }) => {
         backgroundColor: colorGenerator(),
         color: colorGenerator(),
         fontSize: randomSize ? sizeGenerator() : 15
+      }}
+      onClick={() => {
+        devis &&
+          alert(
+            `ID: ${devis._id} \n email: ${devis.email} \n type: ${devis.type} \n etat: ${devis.etat} \n situation: ${devis.situation} \n ZIP: ${devis.zip} \n montant+travaux: ${devis.montant}`
+          );
       }}
     >
       {name}

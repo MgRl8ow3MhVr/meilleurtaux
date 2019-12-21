@@ -8,7 +8,7 @@ import BG from "../assets/BG.mp3";
 const AdminListDevis = ({ token, unlog }) => {
   const [data, setData] = useState([]);
   const [listendelete, setListendelete] = useState(false);
-  const [reload, setReload] = useState(1);
+  const [reload, setReload] = useState(false);
   const [speed, setSpeed] = useState(1);
   // const [speed, setSpeed] = useState(576);
 
@@ -34,7 +34,7 @@ const AdminListDevis = ({ token, unlog }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      setReload(reload + 1);
+      setReload(!reload);
     }, Number(1 / speed) * 576);
   }, [reload]);
 
@@ -71,13 +71,26 @@ const AdminListDevis = ({ token, unlog }) => {
               onClick={() => {
                 setSpeed(Number(speed) * 1.5);
               }}
+              style={{
+                transform: reload ? "scale(1.2)" : "scale(0.8)"
+              }}
             >
               <span>+</span>
             </button>
-            <button onClick={unlog}>LOG OUT</button>
+            <button
+              style={{
+                transform: !reload ? "scale(1.2) rotate(10deg) " : "scale(0.8)"
+              }}
+              onClick={unlog}
+            >
+              LOG OUT
+            </button>
             <button
               onClick={() => {
                 setSpeed(Number(speed) / 1.5);
+              }}
+              style={{
+                transform: reload ? "scale(1.2)" : "scale(0.8) "
               }}
             >
               <span>-</span>
@@ -86,16 +99,25 @@ const AdminListDevis = ({ token, unlog }) => {
           <div
             className="backofficebody"
             style={{ backgroundColor: colorGenerator() }}
+            style={{
+              transform: !reload ? "rotate(1deg)" : "rotate(-1deg)"
+            }}
           >
             <div>
               <AdminOneItem name="EMAIL" />
               <AdminOneItem name="ZIPCODE" />
               <AdminOneItem name="BIEN" />
-              <AdminOneItem name="ETAT" />
+              <AdminOneItem name="MONTANT" />
+              <AdminOneItem name="POUBELLE" />
             </div>
           </div>
 
-          <div className="backofficebody">
+          <div
+            className="backofficebody"
+            style={{
+              transform: !reload ? "rotate(-1deg)" : "rotate(1deg)"
+            }}
+          >
             {data.map((devis, index) => {
               return (
                 <div
@@ -104,10 +126,26 @@ const AdminListDevis = ({ token, unlog }) => {
                     backgroundColor: colorGenerator()
                   }}
                 >
-                  <AdminOneItem name={devis.email} randomSize={true} />
-                  <AdminOneItem name={devis.zip} randomSize={true} />
-                  <AdminOneItem name={devis.type} randomSize={true} />
-                  <AdminOneItem name={devis.etat} randomSize={true} />
+                  <AdminOneItem
+                    name={devis.email}
+                    randomSize={true}
+                    devis={devis}
+                  />
+                  <AdminOneItem
+                    name={devis.zip}
+                    randomSize={true}
+                    devis={devis}
+                  />
+                  <AdminOneItem
+                    name={devis.type + " " + devis.etat}
+                    randomSize={true}
+                    devis={devis}
+                  />
+                  <AdminOneItem
+                    name={devis.montant}
+                    randomSize={true}
+                    devis={devis}
+                  />
 
                   <img
                     src={trash}

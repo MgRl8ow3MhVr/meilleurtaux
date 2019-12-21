@@ -23,6 +23,9 @@ const Admin = () => {
       }
     } catch (e) {
       console.log(e.message);
+      alert(
+        "On est pas surs mais on pense que le serveur n est pas atteignable"
+      );
     }
   };
 

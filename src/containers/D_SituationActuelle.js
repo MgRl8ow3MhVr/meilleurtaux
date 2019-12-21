@@ -2,6 +2,7 @@ import React from "react";
 import ChoiceBox from "../components/ChoiceBox";
 import Navigation from "../components/Navigation";
 import Info from "../assets/infos.png";
+import daccord from "../assets/sounds/daccord.mp3";
 
 const SituationActuelle = ({ MT, setMT }) => {
   //Save the current page on landing.
@@ -9,6 +10,8 @@ const SituationActuelle = ({ MT, setMT }) => {
   if (MT.currPage !== "/situationActuelle") {
     setMT({ ...MT, currPage: "/situationActuelle" });
   }
+
+  const daccordSound = new Audio(daccord);
 
   return (
     <div className="page">
@@ -21,6 +24,7 @@ const SituationActuelle = ({ MT, setMT }) => {
           name="locataire"
           chosen={() => {
             setMT({ ...MT, situation: "locataire" });
+            daccordSound.play();
           }}
           checked={MT.situation === "locataire"}
           next="/ouSeSitue"
@@ -29,6 +33,7 @@ const SituationActuelle = ({ MT, setMT }) => {
           name="propriétaire"
           chosen={() => {
             setMT({ ...MT, situation: "proprietaire" });
+            daccordSound.play();
           }}
           checked={MT.situation === "proprietaire"}
           next="/ouSeSitue"
@@ -38,6 +43,7 @@ const SituationActuelle = ({ MT, setMT }) => {
           name="bénéficiaire d'un logement de fonction"
           chosen={() => {
             setMT({ ...MT, situation: "beneficiaire" });
+            daccordSound.play();
           }}
           checked={MT.situation === "beneficiaire"}
           next="/ouSeSitue"
@@ -46,6 +52,7 @@ const SituationActuelle = ({ MT, setMT }) => {
           name="hébergé à titre gratuit"
           chosen={() => {
             setMT({ ...MT, situation: "heberge" });
+            daccordSound.play();
           }}
           checked={MT.situation === "heberge"}
           next="/ouSeSitue"
@@ -56,6 +63,7 @@ const SituationActuelle = ({ MT, setMT }) => {
         next="/ouSeSitue"
         next_allowed={MT.situation ? true : false}
         percent={45}
+        sound={daccordSound}
       />
     </div>
   );
