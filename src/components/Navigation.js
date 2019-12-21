@@ -11,6 +11,7 @@ const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
   const mauvaisSound = new Audio(mauvais);
   //Sound to be played in any case of "not Allowed to go to next page"
   const nananaSound = new Audio(nanana);
+  nananaSound.volume = 0.2;
 
   return (
     <div className="navigation">

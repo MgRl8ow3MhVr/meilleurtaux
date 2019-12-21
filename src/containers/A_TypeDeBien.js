@@ -3,7 +3,6 @@ import ChoiceBox from "../components/ChoiceBox";
 import Navigation from "../components/Navigation";
 import Info from "../assets/infos.png";
 import mhmh from "../assets/sounds/mhmh.mp3";
-
 const TypeDeBien = ({ MT, setMT }) => {
   //Save the current page on landing.
   // if statement otherwise infinite loop

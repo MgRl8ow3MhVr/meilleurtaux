@@ -36,10 +36,15 @@ const AdminListDevis = ({ token, unlog }) => {
 
   // UseEffect to play the song on Page Landing only.
   // Listening to Speed State to replay it with the new speed
+  // Stops the Music on Component destrutction via return
   useEffect(() => {
     const audio = new Audio(BG);
     audio.play();
-    audio.playbackRate = Number(speed);
+    if (speed > 0.3) {
+      audio.playbackRate = speed;
+    } else {
+      audio.playbackRate = 0.3;
+    }
     return () => {
       audio.pause();
     };

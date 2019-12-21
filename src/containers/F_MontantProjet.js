@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Info from "../assets/infos.png";
-import allez from "../assets/sounds/allez.mp3";
+import sound from "../assets/sounds/yesfort.mp3";
 
 const MontantProjet = ({ MT, setMT }) => {
   const [acquisition, setAcquisition] = useState(MT.acquisition);
   const [travaux, setTravaux] = useState(MT.travaux);
 
   //Loading Sound to be played on Next
-  const allezSound = new Audio(allez);
+  const TheSound = new Audio(sound);
+  TheSound.volume = 0.3;
 
   //Calculation of Notaire fees depending on Etat
   const notaire = num => {
@@ -103,7 +104,7 @@ const MontantProjet = ({ MT, setMT }) => {
         next="/coordonnees"
         next_allowed={MT.acquisition ? true : false}
         percent={75}
-        sound={allezSound}
+        sound={TheSound}
       />
     </div>
   );

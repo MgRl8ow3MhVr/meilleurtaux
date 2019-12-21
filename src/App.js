@@ -32,7 +32,7 @@ const App = () => {
   const [finalId, setFinalId] = useState();
 
   // Cookie Handling - Only on fisrt landing
-  // if doesn't exist then create it empty (first time)
+  // if doesn't exist then create it(first time)
   // if it exists, set the MT state with its content
   useEffect(() => {
     const fetchCookie = async () => {
@@ -59,6 +59,7 @@ const App = () => {
       {!loadingCookie && (
         <Router>
           <Header />
+          {/* All routes are written with a security not force path to it if previous state is not defined */}
           <Switch>
             {/* # # # # # # # A - TYPE DE BIEN # # # # # ## */}
             <Route path="/typeDeBien">
@@ -66,27 +67,51 @@ const App = () => {
             </Route>
             {/* # # # # # # # B - ETAT DU BIEN # # # # # ## */}
             <Route path="/etatDuBien">
-              <EtatDuBien MT={MT} setMT={setMT} />
+              {MT.type ? (
+                <EtatDuBien MT={MT} setMT={setMT} />
+              ) : (
+                <Redirect to={MT.currPage} />
+              )}
             </Route>
             {/* # # # # # # # C - USAGE DU BIEN # # # # # ## */}
             <Route path="/usageDuBien">
-              <UsageDuBien MT={MT} setMT={setMT} />
+              {MT.etat ? (
+                <UsageDuBien MT={MT} setMT={setMT} />
+              ) : (
+                <Redirect to={MT.currPage} />
+              )}
             </Route>
             {/* # # # # # # # D - SITUATION ACTUELLE # # # # # ## */}
             <Route path="/situationActuelle">
-              <SituationActuelle MT={MT} setMT={setMT} />
+              {MT.usage ? (
+                <SituationActuelle MT={MT} setMT={setMT} />
+              ) : (
+                <Redirect to={MT.currPage} />
+              )}
             </Route>
             {/* # # # # # # # E - OU SE SITUE # # # # # ## */}
             <Route path="/ouSeSitue">
-              <OuSeSitue MT={MT} setMT={setMT} />
+              {MT.situation ? (
+                <OuSeSitue MT={MT} setMT={setMT} />
+              ) : (
+                <Redirect to={MT.currPage} />
+              )}
             </Route>
             {/* # # # # # # # F - MONTANT PROJET # # # # # ## */}
             <Route path="/montantProjet">
-              <MontantProjet MT={MT} setMT={setMT} />
+              {MT.zip ? (
+                <MontantProjet MT={MT} setMT={setMT} />
+              ) : (
+                <Redirect to={MT.currPage} />
+              )}
             </Route>
             {/* # # # # # # # G - COORDONNEES # # # # # ## */}
             <Route path="/coordonnees">
-              <Coordonnees MT={MT} setMT={setMT} setFinalId={setFinalId} />
+              {MT.acquisition ? (
+                <Coordonnees MT={MT} setMT={setMT} setFinalId={setFinalId} />
+              ) : (
+                <Redirect to={MT.currPage} />
+              )}
             </Route>
             {/* # # # # # # # H - ET VOILA # # # # # ## */}
             <Route path="/etVoila">

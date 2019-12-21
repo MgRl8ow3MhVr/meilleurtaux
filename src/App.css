@@ -50,11 +50,12 @@ header {
 }
 
 header img {
-  width: 300px;
+  width: 250px;
 }
 header > div {
   display: flex;
   justify-content: space-between;
+  font-size: 0.9rem;
 }
 
 hr {
@@ -234,7 +235,7 @@ h1 {
 
 .cityinput > div {
   border: solid 1px var(--grey);
-  background-color: white;
+  background-color: var(--greylight);
   position: absolute;
   top: 23px;
   z-index: 100;

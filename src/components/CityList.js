@@ -7,11 +7,14 @@ const CityList = ({ input, click }) => {
   //Fetching infos from Vipoco on component mounting, and reload if any new caracter is entered
   useEffect(() => {
     const fetchData = async () => {
+      setData(null);
       try {
         const response = await axios(
           "https://vicopo.selfbuild.fr/cherche/" + input
         );
-        await setData(response.data.cities.slice(0, 15));
+
+        //lets limit it to 20 first results
+        await setData(response.data.cities.slice(0, 20));
       } catch (e) {
         console.log(e.message);
         return;
@@ -22,7 +25,9 @@ const CityList = ({ input, click }) => {
 
   return (
     <>
-      {data && (
+      {!data ? (
+        <div>Recherche en cours...</div>
+      ) : (
         <div>
           {data.map((city, index) => {
             return (

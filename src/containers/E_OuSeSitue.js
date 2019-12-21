@@ -11,12 +11,14 @@ const OuSeSitue = ({ MT, setMT }) => {
   const initcountry = MT.ouSeSitue ? MT.ouSeSitue.country : "FRANCE";
   // initialize city and zip input with what's in the global state
   const initcity = MT.zip && MT.city ? `${MT.city} (${MT.zip})` : null;
+  // country and citySearch are for the two inputs
   const [country, setCountry] = useState(initcountry);
   const [citySearch, setCitySearch] = useState(initcity);
   // This state is for weather the search modal displays or not
   const [searchOpen, setSearchOpen] = useState(false);
   // load sound to be played on next button
   const yesSound = new Audio(yes);
+  yesSound.volume = 0.2;
 
   //Save the current page on landing.
   if (MT.currPage !== "/ouSeSitue") {

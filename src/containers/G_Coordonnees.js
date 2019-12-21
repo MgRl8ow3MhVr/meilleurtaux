@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import BackEndAddress from "../components/BackEndAddress";
 import goodboy from "../assets/sounds/goodboydelay.mp3";
+import allez from "../assets/sounds/allez.mp3";
 
 import Info from "../assets/infos.png";
 import visuel from "../assets/visuel-desktop-email.jpg";
@@ -15,6 +16,8 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
 
   //Load Sound to be played on Valider
   const goodboySound = new Audio(goodboy);
+  const allezSound = new Audio(allez);
+  allezSound.volume = 0.5;
 
   // function upload Datas to back Office to be passed on Valider button
   const UploadDatas = async () => {
@@ -75,6 +78,7 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
         type="checkbox"
         checked={accept}
         onChange={event => {
+          !accept && goodboySound.play();
           setAccept(!accept);
           setMT({ ...MT, acceptemail: !accept });
         }}
@@ -94,7 +98,7 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
           Cookies.remove("meilleurtaux");
           setMT({ currPage: "/typeDeBien" });
         }}
-        sound={goodboySound}
+        sound={allezSound}
       />
     </div>
   );
