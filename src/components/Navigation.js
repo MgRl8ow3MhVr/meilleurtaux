@@ -7,12 +7,15 @@ import nanana from "../assets/sounds/nanana.mp3";
 //AJOUTER MESSAGE D ERREUR
 
 const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
+  //Sound to be played only when returning to Start page
   const mauvaisSound = new Audio(mauvais);
+  //Sound to be played in any case of "not Allowed to go to next page"
   const nananaSound = new Audio(nanana);
 
   return (
     <div className="navigation">
       <div className="navbar">
+        {/* # # # # # # # # PREVIOUS PAGE Button # # # # # # # # # */}
         <Link to={prev}>
           <div
             className="precedent"
@@ -25,10 +28,11 @@ const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
             PRECEDENT
           </div>
         </Link>
-
+        {/* # # # # # # # # PERCENTAGE BAR  # # # # # # # # # */}
         <PercentageBar percent={percent} />
 
         {next_allowed ? (
+          // {/* # # # # # # # # BUTTON NEXT IF ALLOWED TO  # # # # # # # # # */}
           <Link to={next}>
             <div
               className="suivant"
@@ -43,6 +47,7 @@ const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
             </div>
           </Link>
         ) : (
+          // {/* # # # # # # # # BUTTON NEXT IF NOT ALLOWED TO  # # # # # # # # # */}
           <div
             className="suivant"
             onClick={() => {

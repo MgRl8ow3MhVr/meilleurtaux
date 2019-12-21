@@ -12,8 +12,11 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
   const [email, setEmail] = useState(MT.email ? MT.email : null);
   const [accept, setAccept] = useState(MT.acceptemail);
   const [id, setID] = useState();
+
+  //Load Sound to be played on Valider
   const goodboySound = new Audio(goodboy);
 
+  // function upload Datas to back Office to be passed on Valider button
   const UploadDatas = async () => {
     try {
       const response = await axios.post(BackEndAddress + "/deviscreation", {
@@ -25,9 +28,8 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
         montant: MT.acquisition + (MT.travaux ? MT.travaux : 0),
         zip: MT.zip
       });
-      console.log("reponse server");
-      console.log(response.data);
-      console.log("from upoad data", response.data.id);
+      console.log("from server", response.data.id);
+      // FinaliD is a state passed from App.js so it can be passed to the next page container "Et Voila"
       setFinalId(response.data.id);
     } catch (e) {
       console.log(e.message);

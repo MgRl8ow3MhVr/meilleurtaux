@@ -24,7 +24,7 @@ import Z_Admin from "./containers/Z_Admin";
 import Header from "./components/Header";
 
 const App = () => {
-  //Global state definition. Init to first page
+  //Global state definition. it will contain all infos. Init to first page
   const [MT, setMT] = useState({ currPage: "/typeDeBien" });
   console.log("MTApp", MT);
   const [loadingCookie, setLoadingCookie] = useState(true);
@@ -96,7 +96,7 @@ const App = () => {
             <Route path="/admin">
               <Z_Admin />
             </Route>
-            {/* # # # # # # # DEFAULT ROUTE REDIRECTS TO CURRENT PAGE  # # # # # ## */}
+            {/* # # # # # # # DEFAULT ROUTE REDIRECTS TO CURRENT PAGE SAVED IN MT Global State  # # # # # ## */}
             <Route path="/">
               <Redirect from="/" to={MT.currPage} />
             </Route>

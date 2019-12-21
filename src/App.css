@@ -75,7 +75,7 @@ hr {
   margin-top: 5px;
 }
 
-/* # # # # # # # # # # TITLES # # # # # # # # # # # # # # # #   */
+/* # # # # # # # # # # BIG TITLES (ex Type de Bien) # # # # # # # # # # # # # # # #   */
 .title {
   display: flex;
   margin: 20px 0 20px 0;
@@ -90,7 +90,7 @@ h1 {
   text-transform: uppercase;
 }
 
-/* # # # # # # # # # # CHOICE # # # # # # # # # # # # # # # #   */
+/* # # # # # # # # # # CHOICE BOX (first 4 pages) # # # # # # # # # # # # # # # #   */
 
 .choicecontenair {
   display: flex;
@@ -128,7 +128,7 @@ h1 {
   transform: scale(1.05);
 }
 
-/* # # # # # # # # # # NAVIGATION # # # # # # # # # # # # # # # #   */
+/* # # # # # # # # # # NAVIGATION FOOTER PAGE # # # # # # # # # # # # # # # #   */
 
 .navbar {
   display: flex;
@@ -191,7 +191,7 @@ h1 {
   }
 }
 
-/* # # # # # # # # # # FORMS GENERAL # # # # # # # # # # # # # # # #   */
+/* # # # # # # # # # # GENERAL THINGS ON ALL FORMS # # # # # # # # # # # # # # # #   */
 
 .inputbar {
   display: flex;
@@ -214,7 +214,7 @@ h1 {
   border: solid 1px var(--grey);
 }
 
-/* # # # # # # # # # # SPECIAL CITY INPUT # # # # # # # # # # # # # # # #   */
+/* # # # # # # # # # #  CITY INPUT # # # # # # # # # # # # # # # #   */
 
 /* City and Country inputs */
 .OuInput {
@@ -259,7 +259,7 @@ h1 {
   transform: scale(1.05);
 }
 
-/* # # # # # # # # # # SPECIAL PRICES INPUT # # # # # # # # # # # # # # # #   */
+/* # # # # # # # # # #  PRICES INPUT # # # # # # # # # # # # # # # #   */
 
 .priceinput {
   min-width: 140px;

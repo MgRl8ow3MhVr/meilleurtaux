@@ -9,6 +9,7 @@ const UsageDuBien = ({ MT, setMT }) => {
   if (MT.currPage !== "/usageDuBien") {
     setMT({ ...MT, currPage: "/usageDuBien" });
   }
+  // load sound to be played on next button
   const okSound = new Audio(ok);
 
   return (

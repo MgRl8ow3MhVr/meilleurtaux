@@ -6,8 +6,11 @@ import allez from "../assets/sounds/allez.mp3";
 const MontantProjet = ({ MT, setMT }) => {
   const [acquisition, setAcquisition] = useState(MT.acquisition);
   const [travaux, setTravaux] = useState(MT.travaux);
+
+  //Loading Sound to be played on Next
   const allezSound = new Audio(allez);
 
+  //Calculation of Notaire fees depending on Etat
   const notaire = num => {
     if (MT.etat === "neuf") {
       return Math.floor(0.018 * Number(num));
@@ -35,12 +38,14 @@ const MontantProjet = ({ MT, setMT }) => {
           type="text"
           value={acquisition}
           onChange={event => {
+            // Allowing only Numbers
             if (!isNaN(event.target.value)) {
               const val = Number(event.target.value);
               setAcquisition(val);
               setMT({ ...MT, acquisition: val });
             }
           }}
+          //On Click, reset it all
           onClick={() => {
             setAcquisition("");
             setMT({ ...MT, acquisition: null });
@@ -57,6 +62,7 @@ const MontantProjet = ({ MT, setMT }) => {
           type="text"
           value={travaux}
           onChange={event => {
+            //allowing only numbers
             !isNaN(event.target.value) &&
               setTravaux(Number(event.target.value));
             setMT({ ...MT, travaux: Number(event.target.value) });
@@ -64,7 +70,7 @@ const MontantProjet = ({ MT, setMT }) => {
         />
         €
       </div>
-      {/* # # # # # # INPUT NOTAIRE # # # # # # # # # # # # #  */}
+      {/* # # # # # # INPUT NOTAIRE - read Only # # # # # # # # # # # # #  */}
       <div className="inputbar grey">
         <h2>Frais de notaire*</h2>
         <img src={Info} height="18px" alt="i" />
@@ -75,7 +81,7 @@ const MontantProjet = ({ MT, setMT }) => {
         />
         €
       </div>
-      {/* # # # # # # INPUT TOTAL # # # # # # # # # # # # #  */}
+      {/* # # # # # # INPUT TOTAL - read Only # # # # # # # # # # # # #  */}
       <div className="inputbar">
         <h2>Budget total estimé du projet*</h2>
         <img src={Info} height="18px" alt="i" />

@@ -10,6 +10,8 @@ const TypeDeBien = ({ MT, setMT }) => {
   if (MT.currPage !== "/typeDeBien") {
     setMT({ ...MT, currPage: "/typeDeBien" });
   }
+
+  // load sound to be played on next button
   const mhmhSound = new Audio(mhmh);
 
   return (

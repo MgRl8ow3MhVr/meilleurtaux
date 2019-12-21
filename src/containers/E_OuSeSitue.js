@@ -9,11 +9,13 @@ const countries = ["FRANCE", "ALLEMAGNE", "BELGIQUE", "ITALIE", "AUTRE PAYS"];
 const OuSeSitue = ({ MT, setMT }) => {
   // initialize country to what's in the global state otherwise France by default
   const initcountry = MT.ouSeSitue ? MT.ouSeSitue.country : "FRANCE";
+  // initialize city and zip input with what's in the global state
   const initcity = MT.zip && MT.city ? `${MT.city} (${MT.zip})` : null;
   const [country, setCountry] = useState(initcountry);
   const [citySearch, setCitySearch] = useState(initcity);
+  // This state is for weather the search modal displays or not
   const [searchOpen, setSearchOpen] = useState(false);
-
+  // load sound to be played on next button
   const yesSound = new Audio(yes);
 
   //Save the current page on landing.
@@ -61,10 +63,12 @@ const OuSeSitue = ({ MT, setMT }) => {
             type="text"
             value={citySearch}
             placeholder="ex:10300"
+            // On change, open the modal Box
             onChange={event => {
               setSearchOpen(true);
               setCitySearch(event.target.value);
             }}
+            // On click, Reset everything
             onClick={() => {
               setCitySearch("");
               setMT({
@@ -74,7 +78,9 @@ const OuSeSitue = ({ MT, setMT }) => {
               });
             }}
           />
-          {searchOpen && citySearch && (
+          {/* # # # # # # ZIPCODE MODAL SEARCH BOX # # # # # # # # # # # # #  */}
+          {/* It will open if we type at least 2 characters otherwise the vipoco API don't return anything */}
+          {searchOpen && citySearch.length > 1 && (
             <CityList
               input={citySearch}
               click={(city, zip) => {

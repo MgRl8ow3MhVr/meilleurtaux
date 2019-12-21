@@ -4,6 +4,7 @@ import axios from "axios";
 const CityList = ({ input, click }) => {
   const [data, setData] = useState();
 
+  //Fetching infos from Vipoco on component mounting, and reload if any new caracter is entered
   useEffect(() => {
     const fetchData = async () => {
       try {

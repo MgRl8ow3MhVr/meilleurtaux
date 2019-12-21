@@ -6,12 +6,19 @@ import BackEndAddress from "./BackEndAddress";
 import BG from "../assets/BG.mp3";
 
 const AdminListDevis = ({ token, unlog }) => {
+  // this state is to take fetched data from Backoffice
   const [data, setData] = useState([]);
+  // this state is to force reloading this page and refetch data when we deleted one Devis
   const [listendelete, setListendelete] = useState(false);
+  // state is to force reload the page and all colors with it on the Beat of the song
   const [reload, setReload] = useState(false);
+  // This state will define speed of Song and of reload colors
   const [speed, setSpeed] = useState(1);
-  // const [speed, setSpeed] = useState(576);
 
+  // # # # # # # FUNCTIONS RELATED TO DISCO # # # # # # # # # # # #
+
+  // This function Generated random Color.
+  //In a Callback so it's not reloaded every render
   const colorGenerator = useCallback(() => {
     let col = "";
     for (let i = 0; i < 6; i++) {
@@ -20,6 +27,28 @@ const AdminListDevis = ({ token, unlog }) => {
     return "#" + col;
   }, []);
 
+  // UseEffect to force reload the page and all colors and elements transform styles with it on 104 BPM BeeGees Song
+  useEffect(() => {
+    setTimeout(() => {
+      setReload(!reload);
+    }, Number(1 / speed) * 576);
+  }, [reload]);
+
+  // UseEffect to play the song on Page Landing only.
+  // Listening to Speed State to replay it with the new speed
+  useEffect(() => {
+    const audio = new Audio(BG);
+    audio.play();
+    audio.playbackRate = Number(speed);
+    return () => {
+      audio.pause();
+    };
+  }, [speed]);
+
+  // # # # # # # FUNCTIONS RELATED BACK END CALLS # # # # # # # # # # # #
+
+  // This function asks backOffice to delete a Devis
+  //In a Callback so it's not reloaded every render
   const devisdelete = useCallback(async id => {
     try {
       const response = await axios.post(BackEndAddress + "/deletedevis", {
@@ -32,21 +61,7 @@ const AdminListDevis = ({ token, unlog }) => {
     }
   }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setReload(!reload);
-    }, Number(1 / speed) * 576);
-  }, [reload]);
-
-  useEffect(() => {
-    const audio = new Audio(BG);
-    audio.play();
-    audio.playbackRate = Number(speed);
-    return () => {
-      audio.pause();
-    };
-  }, [speed]);
-
+  // This function fetches the Devis Datas from Back End
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,6 +74,8 @@ const AdminListDevis = ({ token, unlog }) => {
     fetchData();
   }, [listendelete]);
 
+  // # # # # # # # # # # # RENDERING # # # # # # # # # # # #
+
   return (
     <>
       {data && (
@@ -66,6 +83,7 @@ const AdminListDevis = ({ token, unlog }) => {
           style={{ backgroundColor: colorGenerator(), paddingBottom: "100px" }}
         >
           <h1> administration </h1>
+          {/*   // # # # # # # # # # # # SPEED AND LOGOUT Buttons # # # # # # # # */}
           <div className="adminbar">
             <button
               onClick={() => {
@@ -96,6 +114,8 @@ const AdminListDevis = ({ token, unlog }) => {
               <span>-</span>
             </button>
           </div>
+          {/*   // # # # # # # # # # # # TITLES LINE # # # # # # # # */}
+
           <div
             className="backofficebody"
             style={{ backgroundColor: colorGenerator() }}
@@ -111,7 +131,7 @@ const AdminListDevis = ({ token, unlog }) => {
               <AdminOneItem name="POUBELLE" />
             </div>
           </div>
-
+          {/*   // # # # # # # # # # # # ACTUAL DATA # # # # # # # # */}
           <div
             className="backofficebody"
             style={{
@@ -146,7 +166,7 @@ const AdminListDevis = ({ token, unlog }) => {
                     randomSize={true}
                     devis={devis}
                   />
-
+                  {/* TRASH ICON TO DELETE A DEVIS */}
                   <img
                     src={trash}
                     alt="trash"
