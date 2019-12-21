@@ -6,13 +6,14 @@ const Header = () => {
   return (
     <header>
       <div>
-        <img src={logo} alt="logo" />
+        <div>
+          <img src={logo} alt="logo" />
+          <div> Crédit immobilier : 5mn pour obtenir le meilleur taux</div>
+        </div>
         <Link to="/Admin" className="adminbutton">
           Admin
         </Link>
       </div>
-      <div> Crédit immobilier : 5mn pour obtenir le meilleur taux</div>
-      <hr />
     </header>
   );
 };

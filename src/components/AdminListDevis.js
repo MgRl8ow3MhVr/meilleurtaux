@@ -102,7 +102,7 @@ const AdminListDevis = ({ token, unlog }) => {
             </button>
             <button
               style={{
-                transform: !reload ? "scale(1.2) rotate(10deg) " : "scale(0.8)"
+                transform: !reload ? "scale(1.2) rotate(5deg) " : "scale(0.8)"
               }}
               onClick={unlog}
             >
@@ -125,7 +125,7 @@ const AdminListDevis = ({ token, unlog }) => {
             className="backofficebody"
             style={{ backgroundColor: colorGenerator() }}
             style={{
-              transform: !reload ? "rotate(1deg)" : "rotate(-1deg)"
+              transform: !reload ? "rotate(0.5deg)" : "rotate(-0.5deg)"
             }}
           >
             <div>
@@ -140,7 +140,7 @@ const AdminListDevis = ({ token, unlog }) => {
           <div
             className="backofficebody"
             style={{
-              transform: !reload ? "rotate(-1deg)" : "rotate(1deg)"
+              transform: !reload ? "rotate(-0.2deg)" : "rotate(0.2deg)"
             }}
           >
             {data.map((devis, index) => {

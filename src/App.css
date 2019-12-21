@@ -24,7 +24,9 @@ select:focus {
 /* # # # # # # # # # # GENERAL # # # # # # # # # # # # # # # #   */
 
 .page {
-  padding: 0px 30px 30px 30px;
+  padding: 0px 50px 30px 50px;
+  max-width: 800px;
+  margin: auto;
 }
 svg {
   box-shadow: 3px 3px 3px 0px rgba(177, 177, 177, 0.56);
@@ -32,11 +34,11 @@ svg {
 }
 
 h2 {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 span {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 
 .underlined {
@@ -46,7 +48,10 @@ span {
 /* # # # # # # # # # # HEADER # # # # # # # # # # # # # # # #   */
 
 header {
-  font-size: 18px;
+  padding: 15px 50px 0 50px;
+  max-width: 800px;
+  margin: auto;
+  line-height: 17px;
 }
 
 header img {
@@ -56,6 +61,7 @@ header > div {
   display: flex;
   justify-content: space-between;
   font-size: 0.9rem;
+  align-items: center;
 }
 
 hr {
@@ -96,27 +102,30 @@ h1 {
 .choicecontenair {
   display: flex;
   justify-content: center;
-  padding: 0px 0 0px 0;
 }
 
 .choicebox {
   /* display */
-  flex: 1 1 auto;
+  flex: 1 1 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   /* Size */
-  min-height: 2.5rem;
+  min-height: 50px;
   margin-right: 10px;
   padding: 10px 10px 10px 10px;
 
   /* Style */
-  font-size: 0.7rem;
-  font-weight: 700;
   border: solid 1px var(--grey);
   box-shadow: 2px 2px 2px 0px var(--grey);
   transition: all 0.2s;
+}
+
+.choicebox > div {
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 .selected {
   background-color: var(--orange);
@@ -196,8 +205,9 @@ h1 {
 
 .inputbar {
   display: flex;
+  /* justify-content: space-between; */
   align-items: center;
-  padding: 3px 30px 3px 15px;
+  padding: 7px 30px 7px 15px;
 }
 
 .grey {
@@ -205,7 +215,7 @@ h1 {
 }
 
 .inputbar > h2 {
-  min-width: 200px;
+  min-width: 250px;
 }
 .orangeborder {
   border: solid 1px var(--orange);
@@ -220,8 +230,7 @@ h1 {
 /* City and Country inputs */
 .OuInput {
   min-width: 170px;
-
-  font-size: 0.9rem;
+  font-size: 18px;
   font-weight: bold;
   padding-left: 5px;
   border-radius: 5px;
@@ -393,4 +402,23 @@ h1 {
 }
 .authent input:nth-child(3):active {
   background-color: rgb(225, 147, 147);
+}
+
+/* # # # # # # # # # # RESPONSIVITY # # # # # # # # # # # # # # # #   */
+
+@media (max-width: 850px) {
+  .choicecontenair {
+    flex-direction: column;
+  }
+  .choicebox {
+    flex: 1 1 auto;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 0.8rem;
+  }
+  .inputbar > h2 {
+    min-width: 180px;
+  }
 }

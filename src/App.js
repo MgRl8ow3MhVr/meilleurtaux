@@ -59,6 +59,7 @@ const App = () => {
       {!loadingCookie && (
         <Router>
           <Header />
+          <hr />
           {/* All routes are written with a security not force path to it if previous state is not defined */}
           <Switch>
             {/* # # # # # # # A - TYPE DE BIEN # # # # # ## */}
