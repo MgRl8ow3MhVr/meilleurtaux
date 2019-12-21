@@ -25,7 +25,7 @@ select:focus {
 
 .page {
   padding: 0px 50px 30px 50px;
-  max-width: 800px;
+  max-width: 950px;
   margin: auto;
 }
 svg {
@@ -34,7 +34,7 @@ svg {
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: 20px;
 }
 
 span {
@@ -49,18 +49,18 @@ span {
 
 header {
   padding: 15px 50px 0 50px;
-  max-width: 800px;
+  max-width: 950px;
   margin: auto;
   line-height: 17px;
 }
 
 header img {
-  width: 250px;
+  width: 300px;
 }
 header > div {
   display: flex;
   justify-content: space-between;
-  font-size: 0.9rem;
+  font-size: 18px;
   align-items: center;
 }
 
@@ -76,10 +76,12 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 8px;
-  height: 15px;
+  font-size: 12px;
+  height: 20px;
   margin-right: 5px;
   margin-top: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 0px var(--grey);
 }
 
 /* # # # # # # # # # # BIG TITLES (ex Type de Bien) # # # # # # # # # # # # # # # #   */
@@ -90,7 +92,8 @@ hr {
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: 35px;
+  /* font-size: 1.8rem; */
   font-weight: 800;
   color: var(--orange);
   margin-right: 10px;
@@ -113,7 +116,7 @@ h1 {
   text-align: center;
 
   /* Size */
-  min-height: 50px;
+  min-height: 70px;
   margin-right: 10px;
   padding: 10px 10px 10px 10px;
 
@@ -121,10 +124,11 @@ h1 {
   border: solid 1px var(--grey);
   box-shadow: 2px 2px 2px 0px var(--grey);
   transition: all 0.2s;
+  border-radius: 5px;
 }
 
 .choicebox > div {
-  font-size: 0.9rem;
+  font-size: 18px;
   font-weight: 700;
 }
 .selected {
@@ -143,7 +147,7 @@ h1 {
 .navbar {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .navbar > div:hover {
@@ -153,14 +157,14 @@ h1 {
 .suivant {
   background-color: var(--orange);
   color: white;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: bold;
   padding: 5px 25px 5px 25px;
   border-radius: 25px;
 }
 .precedent {
   text-decoration: underline;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -177,11 +181,11 @@ h1 {
 
 .number {
   display: flex;
-  font-size: 0.8rem;
+  font-size: 1rem;
   background-color: var(--orange);
   color: white;
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 2.2rem;
+  height: 2.2rem;
   justify-content: center;
   align-items: center;
   border-radius: 1.8rem;
@@ -205,18 +209,18 @@ h1 {
 
 .inputbar {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 7px 30px 7px 15px;
+}
+
+.inputbar > h2 {
+  min-width: 310px;
 }
 
 .grey {
   background-color: var(--greylight);
 }
 
-.inputbar > h2 {
-  min-width: 250px;
-}
 .orangeborder {
   border: solid 1px var(--orange);
   border-bottom-width: 2px;
@@ -230,7 +234,7 @@ h1 {
 /* City and Country inputs */
 .OuInput {
   min-width: 170px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   padding-left: 5px;
   border-radius: 5px;
@@ -256,7 +260,7 @@ h1 {
 }
 .cityinput > div > div {
   font-weight: 200;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   transition: all 0.2s ease;
@@ -415,10 +419,14 @@ h1 {
     margin-bottom: 10px;
   }
 
+  h1 {
+    font-size: 28px;
+    text-align: center;
+  }
   h2 {
-    font-size: 0.8rem;
+    font-size: 17px;
   }
   .inputbar > h2 {
-    min-width: 180px;
+    min-width: 240px;
   }
 }
