@@ -22,7 +22,7 @@ const EtatDuBien = ({ MT, setMT }) => {
         <ChoiceBox
           name="ancien"
           chosen={() => {
-            setMT({ ...MT, etat: "ancien" });
+            setMT({ ...MT, etat: "ancien", moveRight: true });
             ouiSound.play();
           }}
           checked={MT.etat === "ancien"}
@@ -31,7 +31,7 @@ const EtatDuBien = ({ MT, setMT }) => {
         <ChoiceBox
           name="neuf"
           chosen={() => {
-            setMT({ ...MT, etat: "neuf" });
+            setMT({ ...MT, etat: "neuf", moveRight: true });
             ouiSound.play();
           }}
           checked={MT.etat === "neuf"}
@@ -44,6 +44,9 @@ const EtatDuBien = ({ MT, setMT }) => {
         next_allowed={MT.etat ? true : false}
         percent={15}
         sound={ouiSound}
+        // Passing MT to define percentage bar moving direction as a global value
+        MT={MT}
+        setMT={setMT}
       />
     </div>
   );

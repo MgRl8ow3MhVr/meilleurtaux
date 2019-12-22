@@ -22,6 +22,7 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
   // function upload Datas to back Office to be passed on Valider button
   const UploadDatas = async () => {
     try {
+      setFinalId(null);
       const response = await axios.post(BackEndAddress + "/deviscreation", {
         email: MT.email,
         type: MT.type,
@@ -99,6 +100,9 @@ const Coordonnees = ({ MT, setMT, setFinalId }) => {
           setMT({ currPage: "/typeDeBien" });
         }}
         sound={allezSound}
+        // Passing MT to define percentage bar moving direction as a global value
+        MT={MT}
+        setMT={setMT}
       />
     </div>
   );

@@ -22,7 +22,7 @@ const UsageDuBien = ({ MT, setMT }) => {
         <ChoiceBox
           name="résidence principale"
           chosen={() => {
-            setMT({ ...MT, usage: "residence_principale" });
+            setMT({ ...MT, usage: "residence_principale", moveRight: true });
             okSound.play();
           }}
           checked={MT.usage === "residence_principale"}
@@ -31,7 +31,7 @@ const UsageDuBien = ({ MT, setMT }) => {
         <ChoiceBox
           name="résidence secondaire"
           chosen={() => {
-            setMT({ ...MT, usage: "residence_secondaire" });
+            setMT({ ...MT, usage: "residence_secondaire", moveRight: true });
             okSound.play();
           }}
           checked={MT.usage === "residence_secondaire"}
@@ -40,7 +40,7 @@ const UsageDuBien = ({ MT, setMT }) => {
         <ChoiceBox
           name="investissement locatif"
           chosen={() => {
-            setMT({ ...MT, usage: "investissement_locatif" });
+            setMT({ ...MT, usage: "investissement_locatif", moveRight: true });
             okSound.play();
           }}
           checked={MT.usage === "investissement_locatif"}
@@ -53,6 +53,9 @@ const UsageDuBien = ({ MT, setMT }) => {
         next_allowed={MT.usage ? true : false}
         percent={30}
         sound={okSound}
+        // Passing MT to define percentage bar moving direction as a global value
+        MT={MT}
+        setMT={setMT}
       />
     </div>
   );

@@ -23,7 +23,7 @@ const SituationActuelle = ({ MT, setMT }) => {
         <ChoiceBox
           name="locataire"
           chosen={() => {
-            setMT({ ...MT, situation: "locataire" });
+            setMT({ ...MT, situation: "locataire", moveRight: true });
             daccordSound.play();
           }}
           checked={MT.situation === "locataire"}
@@ -32,7 +32,7 @@ const SituationActuelle = ({ MT, setMT }) => {
         <ChoiceBox
           name="propriétaire"
           chosen={() => {
-            setMT({ ...MT, situation: "proprietaire" });
+            setMT({ ...MT, situation: "proprietaire", moveRight: true });
             daccordSound.play();
           }}
           checked={MT.situation === "proprietaire"}
@@ -42,7 +42,7 @@ const SituationActuelle = ({ MT, setMT }) => {
         <ChoiceBox
           name="bénéficiaire d'un logement de fonction"
           chosen={() => {
-            setMT({ ...MT, situation: "beneficiaire" });
+            setMT({ ...MT, situation: "beneficiaire", moveRight: true });
             daccordSound.play();
           }}
           checked={MT.situation === "beneficiaire"}
@@ -51,7 +51,7 @@ const SituationActuelle = ({ MT, setMT }) => {
         <ChoiceBox
           name="hébergé à titre gratuit"
           chosen={() => {
-            setMT({ ...MT, situation: "heberge" });
+            setMT({ ...MT, situation: "heberge", moveRight: true });
             daccordSound.play();
           }}
           checked={MT.situation === "heberge"}
@@ -64,6 +64,9 @@ const SituationActuelle = ({ MT, setMT }) => {
         next_allowed={MT.situation ? true : false}
         percent={45}
         sound={daccordSound}
+        // Passing MT to define percentage bar moving direction as a global value
+        MT={MT}
+        setMT={setMT}
       />
     </div>
   );

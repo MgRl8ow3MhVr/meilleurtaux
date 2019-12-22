@@ -23,7 +23,7 @@ const TypeDeBien = ({ MT, setMT }) => {
         <ChoiceBox
           name="maison"
           chosen={() => {
-            setMT({ ...MT, type: "maison" });
+            setMT({ ...MT, type: "maison", moveRight: true });
             mhmhSound.play();
           }}
           checked={MT.type === "maison"}
@@ -32,7 +32,7 @@ const TypeDeBien = ({ MT, setMT }) => {
         <ChoiceBox
           name="appartement"
           chosen={() => {
-            setMT({ ...MT, type: "appartement" });
+            setMT({ ...MT, type: "appartement", moveRight: true });
             mhmhSound.play();
           }}
           checked={MT.type === "appartement"}
@@ -45,6 +45,9 @@ const TypeDeBien = ({ MT, setMT }) => {
         next_allowed={MT.type ? true : false}
         percent={0}
         sound={mhmhSound}
+        // Passing MT to define percentage bar moving direction as a global value
+        MT={MT}
+        setMT={setMT}
       />
     </div>
   );

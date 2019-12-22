@@ -115,6 +115,9 @@ const OuSeSitue = ({ MT, setMT }) => {
         next_allowed={MT.zip && MT.country && MT.city}
         percent={60}
         sound={yesSound}
+        // Passing MT to define percentage bar moving direction as a global value
+        MT={MT}
+        setMT={setMT}
       />
     </div>
   );

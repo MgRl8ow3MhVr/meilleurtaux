@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PercentageBar from "./PercentageBar";
 import mauvais from "../assets/sounds/mauvais.mp3";
@@ -6,7 +6,16 @@ import nanana from "../assets/sounds/nanana.mp3";
 
 //AJOUTER MESSAGE D ERREUR
 
-const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
+const Navigation = ({
+  prev,
+  next,
+  next_allowed,
+  percent,
+  valider,
+  sound,
+  MT,
+  setMT
+}) => {
   //Sound to be played only when returning to Start page
   const mauvaisSound = new Audio(mauvais);
   //Sound to be played in any case of "not Allowed to go to next page"
@@ -21,6 +30,8 @@ const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
           <div
             className="precedent"
             onClick={() => {
+              //adding to MT global state the direction
+              setMT({ ...MT, moveRight: false });
               if (prev === "/typeDeBien") {
                 mauvaisSound.play();
               }
@@ -30,7 +41,9 @@ const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
           </div>
         </Link>
         {/* # # # # # # # # PERCENTAGE BAR  # # # # # # # # # */}
-        <PercentageBar percent={percent} />
+        {/* {setIsready && ( */}
+        <PercentageBar percent={percent} MT={MT} />
+        {/* )} */}
 
         {next_allowed ? (
           // {/* # # # # # # # # BUTTON NEXT IF ALLOWED TO  # # # # # # # # # */}
@@ -38,6 +51,7 @@ const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
             <div
               className="suivant"
               onClick={() => {
+                setMT({ ...MT, moveRight: true });
                 sound.play();
                 if (valider) {
                   valider();
@@ -52,6 +66,7 @@ const Navigation = ({ prev, next, next_allowed, percent, valider, sound }) => {
           <div
             className="suivant"
             onClick={() => {
+              setMT({ ...MT, moveRight: true });
               nananaSound.play();
               alert("vous n'avez pas renseigné tous les champs");
             }}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const PercentageBar = ({ percent }) => {
+const PercentageBar = ({ percent, MT }) => {
   const style1 = {
     backgroundColor: "#FFDFB1",
     width: `${percent}%`,
@@ -18,7 +18,10 @@ const PercentageBar = ({ percent }) => {
   return (
     <div className="percentagebar">
       <div style={style1}></div>
-      <div style={styleNumber} className="number">
+      <div
+        style={styleNumber}
+        className={MT.moveRight ? "number moveright" : "number moveleft"}
+      >
         {percent + " %"}
       </div>
       <div style={style2}></div>

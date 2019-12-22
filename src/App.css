@@ -130,7 +130,7 @@ h1 {
 .choicebox > div {
   font-size: 18px;
   font-weight: 700;
-  margin-Left:4px
+  margin-left: 4px;
 }
 .selected {
   background-color: var(--orange);
@@ -192,17 +192,31 @@ h1 {
   border-radius: 1.8rem;
   border: solid 3px var(--orangelight);
   transform: translateX(-0.9rem);
-
   position: absolute;
   transition: all 1s;
-  animation: mymove 0.5s;
 }
-@keyframes mymove {
+
+.moveright {
+  animation: moveright 1s;
+}
+.moveleft {
+  animation: moveleft 1s;
+}
+
+@keyframes moveright {
   from {
-    transform: translateX(-50px);
+    transform: translateX(-6vw);
   }
   to {
-    transform: translateX(0px);
+    transform: translateX(-0.9rem) rotate(360deg);
+  }
+}
+@keyframes moveleft {
+  from {
+    transform: translateX(4vw);
+  }
+  to {
+    transform: translateX(-0.9rem) rotate(-360deg);
   }
 }
 
@@ -432,7 +446,7 @@ h1 {
   }
 
   .visual {
-    flex-direction:column-reverse;
-    align-items:center
+    flex-direction: column-reverse;
+    align-items: center;
   }
 }

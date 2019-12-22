@@ -105,6 +105,9 @@ const MontantProjet = ({ MT, setMT }) => {
         next_allowed={MT.acquisition ? true : false}
         percent={75}
         sound={TheSound}
+        // Passing MT to define percentage bar moving direction as a global value
+        MT={MT}
+        setMT={setMT}
       />
     </div>
   );

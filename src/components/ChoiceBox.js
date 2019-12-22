@@ -13,7 +13,7 @@ const ChoiceBox = ({ name, chosen, checked, next }) => {
       className={checked ? "choicebox selected" : "choicebox"}
     >
       {/* <input type="radio" checked={checked} readOnly /> */}
-      <img src={checked ?radio_button_checked:radio_button_unchecked} />
+      <img src={checked ? radio_button_checked : radio_button_unchecked} />
       <div style={{ color: checked && "white" }}>{name.toUpperCase()}</div>
     </Link>
   );
